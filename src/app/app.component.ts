@@ -1,7 +1,6 @@
 import { Component } from '@angular/core';
 import { tap } from 'rxjs';
 import { BdService } from './shared/services/bd.service';
-import { Login } from './shared/interfaces/login.interface';
 import { Residente } from './shared/interfaces/residente.interface';
 import { Casa } from './shared/interfaces/casa.interface';
 import { Pago } from './shared/interfaces/pago.interface';
