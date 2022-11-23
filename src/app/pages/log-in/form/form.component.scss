@@ -1,0 +1,120 @@
+.form-container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+
+    width: 50%;
+    height: 100%;
+    
+    span {
+        font-style: normal;
+        font-weight: 600;
+        font-size: 32px;
+        line-height: 39px;
+        text-align: center;
+        
+        color: var(--secondary);
+
+        margin-bottom: 50px;
+    }
+
+    .input-container {
+        display: flex;
+        flex-direction: row;
+        justify-content: center;
+
+        margin-bottom: 30px;
+
+        input {
+            width: 400px;
+            height: 60px;
+
+            background-color: #FFFF;
+
+            border-radius: 20px;
+            border: none;
+
+            font-style: normal;
+            font-weight: 500;
+            font-size: 20px;
+            line-height: 24px;
+        }
+
+        label {
+            font-style: normal;
+            font-weight: 500;
+            font-size: 20px;
+            line-height: 24px;
+
+            color: gray;
+        }
+
+        .icon {
+            width: 40px;
+            height: 40px;
+
+            font-size: 40px;
+            margin-top: 10px;
+            margin-left: -60px;
+            margin-right: 20px;
+
+            color: var(--secondary);
+        }
+    }
+
+    button {
+        width: 300px;
+        height: 50px;
+
+        padding: 0px;
+
+        border: none;
+        border-radius: 20px;
+
+        color: #FFFF;
+
+        font-style: normal;
+        font-weight: 500;
+        font-size: 20px;
+        line-height: 24px;
+        text-align: center;
+
+        background-color: var(--secondary);
+    }
+
+    .advertencia {
+        width: 300px;
+        
+        margin-top: -10px;
+        margin-bottom: 20px;
+        text-align: center;
+
+        span {
+            color: var(--danger);
+            font-style: normal;
+            font-weight: 500;
+            font-size: 16px;
+            line-height: 24px;  
+        }
+    }
+}
+
+.form-container {
+    input:focus {
+        border: 3px solid var(--secondary) !important;
+        box-shadow: 0 0 0px var(--secondary);
+    }
+
+    button:enabled:hover {
+        background-color: var(--backgorund);
+        border: 2px solid var(--secondary) !important;
+        color: var(--secondary) !important;
+
+        transition: all 0.05s ease-in-out;
+    }
+
+    button:disabled {
+        opacity: .5;
+    }
+}

@@ -1,0 +1,31 @@
+<header>
+    <div class="logo-container" (click)="irA('/principal')">
+        <mat-icon class="icon">home</mat-icon>
+        <h1>SGResident</h1>
+    </div>
+
+    <nav class="bar">
+        <ul>
+            <li class="izquierda {{barra[0]}}" (click)="barraOpcion(0, '/principal')">
+                <span class=>Tablero</span>
+            </li>
+            <li class="{{barra[1]}}" (click)="barraOpcion(1, '/agregar-residente')">
+                <span>Agregar Residente</span>
+            </li>
+            <li class="{{barra[2]}}" (click)="barraOpcion(2, '/agregar-pago')">
+                <span>Agregar Pago</span>
+            </li>
+            <li class="{{barra[3]}}" (click)="barraOpcion(3, '/buscar-residentes')">
+                <span>Buscar Residente</span>
+            </li>
+            <li class="derecha {{barra[4]}}" (click)="barraOpcion(4, '/buscar-pago')">
+                <span>Buscar Pago</span>
+            </li>
+        </ul>
+    </nav>
+
+    <div class="user">
+        <span>Admin</span>
+        <mat-icon class="icons">person</mat-icon>
+    </div>
+</header>

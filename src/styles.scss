@@ -1,11 +1,14 @@
 /* You can add global styles to this file, and also import other style files */
 :root {
-    --primary-SG: #153462;
-    --secondary-SG: #4FA095;
-    --secondary-light-SG: #5AD3C3;
-    --tertiary-SG: #BAD1C2;
-    --tertiary-light-SG: #F6F6C9;
-    --danger-SG: #D43D46;
+    --primary: #153462;
+	--primary-light: #1D447E;
+    --secondary: #4FA095;
+    --secondary-light: #5AD3C3;
+    --tertiary: #BAD1C2;
+    --tertiary-light: #F6F6C9;
+    --danger: #D43D46;
+	--background: #383838;
+	
 }
 
 
@@ -61,3 +64,6 @@ html, body { height: 100%; }
 body { margin: 0; font-family: Roboto, sans-serif; }
 html, body { height: 100%; }
 body { margin: 0; font-family: Roboto, sans-serif; }
+body {
+	background-color: var(--background);
+}

@@ -3,15 +3,19 @@ import { CommonModule } from '@angular/common';
 
 import { PrincipalRoutingModule } from './principal-routing.module';
 import { PrincipalComponent } from './principal.component';
+import { MaterialModule } from '../../material.module';
+import { HeaderComponent } from 'src/app/shared/components/header/header.component';
 
 
 @NgModule({
   declarations: [
-    PrincipalComponent
+    PrincipalComponent,
+    HeaderComponent
   ],
   imports: [
     CommonModule,
-    PrincipalRoutingModule
+    PrincipalRoutingModule,
+    MaterialModule
   ]
 })
 export class PrincipalModule { }

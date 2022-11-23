@@ -1,0 +1,24 @@
+<form class="form-container" #formulario="ngForm">
+    <span>Administrador</span>
+    <div class="input-container">
+        <mat-icon class="icon">person</mat-icon>
+        <div class="form-floating">
+            <input type="text" class="form-control" id="usuario" name="usuario" 
+            placeholder="Admin" [(ngModel)]="usuario" required>
+            <label for="usuario">Usuario</label>
+        </div>
+    </div>
+    
+    <div class="input-container form-floating">
+        <mat-icon class="icon">lock</mat-icon>
+        <input type="password" class="form-control" id="contrasena" name="contraseña"
+        placeholder="Password123" [(ngModel)]="contrasena" required>
+        <label for="constrasena">Contraseña</label>
+    </div>
+
+    <div class="advertencia" *ngIf="loginIncorrecto">
+        <span>Los datos ingesados son incorrectos, intentalo de nuevo</span>
+    </div>
+
+    <button [disabled]="!formulario.valid" (click)="ingresar()">Ingresar</button>
+</form>
