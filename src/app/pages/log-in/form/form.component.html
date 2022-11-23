@@ -9,11 +9,15 @@
         </div>
     </div>
     
-    <div class="input-container form-floating">
+    <div class="input-container">
+
         <mat-icon class="icon">lock</mat-icon>
-        <input type="password" class="form-control" id="contrasena" name="contraseña"
-        placeholder="Password123" [(ngModel)]="contrasena" required>
-        <label for="constrasena">Contraseña</label>
+        <div class="form-floating">
+            <input type="password" class="form-control" id="contrasena" name="contraseña"
+            placeholder="Password123" [(ngModel)]="contrasena" required>
+            <label for="constrasena">Contraseña</label>
+        </div>
+        
     </div>
 
     <div class="advertencia" *ngIf="loginIncorrecto">

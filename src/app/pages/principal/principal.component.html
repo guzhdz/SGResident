@@ -6,17 +6,17 @@
 
     <div class="contadores">
         <div class="residentes">
-            <span class="cifra">30</span>
+            <span class="cifra">{{residentes}}</span>
             <span class="nombre">Residentes registrados</span>
         </div>
     
         <div class="pagos">
-            <span class="cifra">250</span>
+            <span class="cifra">{{pagos}}</span>
             <span class="nombre">Pagos guardados</span>
         </div>
     
         <div class="archivados">
-            <span class="cifra">130</span>
+            <span class="cifra">{{archivados}}</span>
             <span class="nombre">Datos archivados</span>
         </div>
     </div>
@@ -29,13 +29,13 @@
     <div class="herr-container">
         <div class="herramientas">
             <div class="herramientas-group">
-                <div class="herramienta derecha blanco">
+                <div class="herramienta derecha blanco" (click)="irA('/facturas')">
                     <mat-icon class="icon">people</mat-icon>
                     <span class="herramienta-texto">Ver facturas generadas</span>
                     <mat-icon class="icon">more_vert</mat-icon>
                 </div>
         
-                <div class="herramienta blanco">
+                <div class="herramienta blanco" (click)="irA('/recuperar')">
                     <mat-icon class="icon">restore_from_trash</mat-icon>
                     <span>Ver recuperar eliminados</span>
                     <mat-icon class="icon">more_vert</mat-icon>
@@ -43,13 +43,13 @@
             </div>
         
             <div class="herramientas-group">
-                <div class="herramienta derecha prim">
+                <div class="herramienta derecha prim" (click)="irA('/buscar-residentes')">
                     <mat-icon class="icon">people</mat-icon>
                     <span>Listado de todos los residentes</span>
                     <mat-icon class="icon">more_vert</mat-icon>
                 </div>
         
-                <div class="herramienta prim">
+                <div class="herramienta prim" (click)="irA('/buscar-pagos')">
                     <mat-icon class="icon">credit_card</mat-icon>
                     <span>Listado de todos los pagos</span>
                     <mat-icon class="icon">more_vert</mat-icon>

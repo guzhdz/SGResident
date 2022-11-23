@@ -81,6 +81,17 @@ app.get(`${rootUrl}/residentes/:id`, (req, res) => {
   })
 });
 
+app.get(`${rootUrl}/residentesC/:habilitado`, (req, res) => {
+  const {habilitado} = req.params;
+  ;(async () => {
+      const q = (`SELECT COUNT(id_res) FROM residentes WHERE habilitado = ${habilitado}`);
+      const { rows } = await pool.query(q);
+      res.json(rows);
+    })().catch(err => {
+      res.json(err.stack)
+  })
+});
+
 app.post(`${rootUrl}/residentes`, (req, res) => {
   const {
     nombre,
@@ -248,6 +259,17 @@ app.get(`${rootUrl}/pagosH/:habilitado`, (req, res) => {
   const {habilitado} = req.params;
   ;(async () => {
       const q = (`SELECT * FROM pagos WHERE habilitado = ${habilitado}`);
+      const { rows } = await pool.query(q);
+      res.json(rows);
+    })().catch(err => {
+      res.json(err.stack)
+  })
+});
+
+app.get(`${rootUrl}/pagosC/:habilitado`, (req, res) => {
+  const {habilitado} = req.params;
+  ;(async () => {
+      const q = (`SELECT COUNT(folio) FROM pagos WHERE habilitado = ${habilitado}`);
       const { rows } = await pool.query(q);
       res.json(rows);
     })().catch(err => {

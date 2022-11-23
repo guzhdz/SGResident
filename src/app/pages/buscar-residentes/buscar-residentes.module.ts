@@ -3,6 +3,7 @@ import { CommonModule } from '@angular/common';
 
 import { BuscarResidentesRoutingModule } from './buscar-residentes-routing.module';
 import { BuscarResidentesComponent } from './buscar-residentes.component';
+import { ComponentsModule } from '../../components.module';
 
 
 @NgModule({
@@ -11,7 +12,8 @@ import { BuscarResidentesComponent } from './buscar-residentes.component';
   ],
   imports: [
     CommonModule,
-    BuscarResidentesRoutingModule
+    BuscarResidentesRoutingModule,
+    ComponentsModule
   ]
 })
 export class BuscarResidentesModule { }

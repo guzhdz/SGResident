@@ -68,6 +68,12 @@
                 color: var(--primary);
             }
         }
+
+        .residentes:hover {
+            scale: 1.02;
+            
+            transition: all .3s ease-in-out;
+        }
     
         .pagos {
             display: flex;
@@ -110,6 +116,12 @@
             margin-left: auto;
             margin-right: auto;
         }
+
+        .pagos:hover {           
+            scale: 1.02;
+            
+            transition: all .3s ease-in-out;
+        }
     
         .archivados {
             display: flex;
@@ -148,6 +160,12 @@
     
                 color: var(--primary);
             }
+        }
+
+        .archivados:hover {
+            scale: 1.02;
+            
+            transition: all .3s ease-in-out;
         }
     }
 
@@ -234,6 +252,22 @@
             height: 162px;
 
             margin-left: 10%;
+
+            animation-name: jump;
+            animation-duration: 1.5s;
+            animation-iteration-count: infinite;
         }
+    }
+    
+    .herramienta:hover {
+        scale: 1.02;
+        cursor: pointer;
+        transition: all .3s ease-in-out;
+    }
+
+    @keyframes jump {
+        0% {transform: translate(0px, 0px);}
+        50% {transform: translate(0px, 10px);}
+        100% {transform: translate(0px, 0px);}
     }
 }
