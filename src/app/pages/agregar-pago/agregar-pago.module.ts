@@ -4,7 +4,7 @@ import { CommonModule } from '@angular/common';
 import { AgregarPagoRoutingModule } from './agregar-pago-routing.module';
 import { AgregarPagoComponent } from './agregar-pago.component';
 import { MaterialModule } from 'src/app/material.module';
-import { PrincipalModule } from '../principal/principal.module';
+import { ComponentsModule } from 'src/app/components.module';
 
 
 @NgModule({
@@ -15,7 +15,7 @@ import { PrincipalModule } from '../principal/principal.module';
     CommonModule,
     AgregarPagoRoutingModule,
     MaterialModule,
-    PrincipalModule
+    ComponentsModule
   ]
 })
 export class AgregarPagoModule { }

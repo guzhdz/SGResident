@@ -4,7 +4,7 @@ import { CommonModule } from '@angular/common';
 import { AgregarResidenteRoutingModule } from './agregar-residente-routing.module';
 import { AgregarResidenteComponent } from './agregar-residente.component';
 import { MaterialModule } from '../../material.module';
-import { PrincipalModule } from '../principal/principal.module';
+import { ComponentsModule } from 'src/app/components.module';
 
 
 
@@ -19,7 +19,7 @@ import { PrincipalModule } from '../principal/principal.module';
         CommonModule,
         AgregarResidenteRoutingModule,
         MaterialModule,
-        PrincipalModule
+        ComponentsModule
     ]
 })
 export class AgregarResidenteModule { }
