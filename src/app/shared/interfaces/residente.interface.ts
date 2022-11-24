@@ -1,10 +1,10 @@
 export interface Residente {
     id_res?: number,
 	nombre: string,
-	apellidoP: string,
-	apellidoM: string,
+	apellido_p: string,
+	apellido_m: string,
 	sexo: string,
-	fechaNacimiento: string,
+	fecha_nacimiento: string,
 	edad: number,
 	telefono: string,
 	habilitado: boolean,

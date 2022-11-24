@@ -81,6 +81,19 @@ app.get(`${rootUrl}/residentes/:id`, (req, res) => {
   })
 });
 
+app.get(`${rootUrl}/residenteNom/:nombre`, (req, res) => {
+  const {nombre} = req.params;
+  console.log(nombre);
+  ;(async () => {
+      const q = (`SELECT * FROM residentes WHERE concat(nombre, ' ', apellido_p, ' ', apellido_m)
+      LIKE '%${nombre}%' AND habilitado = true`);
+      const { rows } = await pool.query(q);
+      res.json(rows);
+    })().catch(err => {
+      res.json(err.stack)
+  })
+});
+
 app.get(`${rootUrl}/residentesC/:habilitado`, (req, res) => {
   const {habilitado} = req.params;
   ;(async () => {
@@ -95,10 +108,10 @@ app.get(`${rootUrl}/residentesC/:habilitado`, (req, res) => {
 app.post(`${rootUrl}/residentes`, (req, res) => {
   const {
     nombre,
-    apellidoP,
-    apellidoM,
+    apellido_p,
+    apellido_m,
     sexo,
-    fechaNacimiento,
+    fecha_nacimiento,
     edad,
     telefono,
     habilitado,
@@ -106,7 +119,7 @@ app.post(`${rootUrl}/residentes`, (req, res) => {
   } = req.body;
   ;(async () => {
       const q = (`INSERT INTO residentes VALUES 
-      (DEFAULT, '${nombre}', '${apellidoP}', '${apellidoM}', '${sexo}', '${fechaNacimiento}', 
+      (DEFAULT, '${nombre}', '${apellido_p}', '${apellido_m}', '${sexo}', '${fecha_nacimiento}', 
       ${edad}, '${telefono}', ${habilitado}, ${id_casa});`);
       await pool.query(q);
       res.json({status: "Residente agregado"});
@@ -130,10 +143,10 @@ app.put(`${rootUrl}/residentes/:id`, (req, res) => {
   const {id} = req.params;
   const {
     nombre,
-    apellidoP,
-    apellidoM,
+    apellido_p,
+    apellido_m,
     sexo,
-    fechaNacimiento,
+    fecha_nacimiento,
     edad,
     telefono,
     habilitado,
@@ -142,8 +155,8 @@ app.put(`${rootUrl}/residentes/:id`, (req, res) => {
 
   ;(async () => {
       const q = (`UPDATE residentes SET 
-      nombre ='${nombre}', apellido_p = '${apellidoP}', apellido_m ='${apellidoM}', sexo = '${sexo}', 
-      fecha_nacimiento = '${fechaNacimiento}', edad = ${edad}, telefono = '${telefono}',
+      nombre ='${nombre}', apellido_p = '${apellido_p}', apellido_m ='${apellido_m}', sexo = '${sexo}', 
+      fecha_nacimiento = '${fecha_nacimiento}', edad = ${edad}, telefono = '${telefono}',
       habilitado = ${habilitado}, id_casa = ${id_casa} WHERE id_res = ${id}`);
       await pool.query(q);
       res.json({status: "Residente modificado"});

@@ -1,1 +1,32 @@
 <app-header [opcion]="3"></app-header>
+<div class="buscar">
+    <div class="titulo-container">
+        <h1>Residentes</h1>
+    </div>
+
+    <div class="buscador">
+        <div class="icon-container">
+            <mat-icon class="icon">search</mat-icon>
+        </div>
+        <input type="text" placeholder="Buscar residente por nombre" 
+        [(ngModel)]="buscar" (input)="buscarResidente()">
+    </div>
+
+    <div class="boton-container">
+        <button>Agregar residente</button>
+        <mat-icon class="icon">add_circle</mat-icon>
+    </div>
+
+    <div class="residente" *ngFor="let residente of residentes">
+        <div class="info">
+            <mat-icon class="icon">people</mat-icon>
+            <span>{{residente.nombre + " " + residente.apellido_p + " " + residente.apellido_m}}</span>
+        </div>
+
+        <div class="options">
+            <button>Ver detalles</button>
+            <mat-icon class="icon primary medio">border_color</mat-icon>
+            <mat-icon class="icon danger">delete</mat-icon>
+        </div>
+    </div>
+</div>

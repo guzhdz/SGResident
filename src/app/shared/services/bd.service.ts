@@ -36,6 +36,10 @@ export class BdService {
     return this.http.get<Residente[]>(`${this.apiUrl}/residentes/${id}`);
   }
 
+  obtenerResidenteNom(nombre: string): Observable<Residente[]> {
+    return this.http.get<Residente[]>(`${this.apiUrl}/residenteNom/${nombre}`);
+  }
+
   contarResidentes(habilitado: boolean): Observable<any> {
     return this.http.get<any>(`${this.apiUrl}/residentesC/${habilitado}`);
   }
