@@ -16,6 +16,10 @@ import { HeaderComponent } from 'src/app/shared/components/header/header.compone
     CommonModule,
     PrincipalRoutingModule,
     MaterialModule
+  ],
+  exports: [
+    HeaderComponent
   ]
 })
 export class PrincipalModule { }
+
