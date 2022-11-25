@@ -11,39 +11,38 @@
 
     <div class="datos">
 
-        <div class="nombre">
-            <input type="text" placeholder="Nombre completo"
-            [(ngModel)]="nombre" (input)="Nombre()">
+        <div class="grande">
+            <input type="text" [(ngModel)]="datos.nombre" placeholder="Nombre completo">
         </div>
 
 
-        <div class="sexo">
-            <input type="text" placeholder="Sexo">
+        <div class="chico">
+            <input type="text"[(ngModel)]="datos.sexo" placeholder="Sexo">
 
         </div>
 
-        <div class="edad">
-            <input type="text" placeholder="Edad">
+        <div class="chico">
+            <input type="text"[(ngModel)]="datos.edad" placeholder="Edad">
         </div>
 
-        <div class="telefono">
-            <input type="text" placeholder="Telefono">
+        <div class="chico">
+            <input type="text"[(ngModel)]="datos.telefono" placeholder="Telefono">
         </div>
 
-        <div class="domicilio">
-            <input type="text" placeholder="Domicilio y numero de casa">
+        <div class="grande">
+            <input type="text" [(ngModel)]="direccion.num_dom" placeholder="Domicilio y numero de casa">
         </div>
 
-        <div class="calle1">
-            <input type="text" placeholder="Entre calle 1">
+        <div class="chico">
+            <input type="text" [(ngModel)]="direccion.vialidad_1" placeholder="Entre calle 1">
         </div>
 
-        <div class="calle2">
-            <input type="text" placeholder="Entre calle 2">
+        <div class="chico">
+            <input type="text" [(ngModel)]="direccion.vialidad_2" placeholder="Entre calle 2">
         </div>
 
-        <div class="referencia">
-            <input type="text" placeholder="Referencia">
+        <div class="grande">
+            <input type="text" [(ngModel)]="direccion.referencias" placeholder="Referencia">
         </div>
 
     </div>
@@ -51,7 +50,7 @@
 
 
     <div class="boton-container">
-        <button>Aceptar</button>
+        <button (click)="agregar()">Aceptar</button>
         <mat-icon class="icon">add_circle</mat-icon>
     </div>
    

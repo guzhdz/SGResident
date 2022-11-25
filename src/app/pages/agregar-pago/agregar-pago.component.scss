@@ -40,6 +40,7 @@
 
     .datos{
 
+
         display: inline-block;
         flex-direction: row;
         align-items: center;
@@ -49,117 +50,14 @@
 
         margin-bottom: 25px;
 
-        .fechapago {   
-            display: inline-block;
-            flex-basis:  auto;
-            align-items: center;
-            padding-top: 10px;
-            padding-bottom: 10px;
-
-            icon-container {
-    
-                width: 60px;
-                height: 60px;
-    
-                background-color: var(--secondary);
-    
-                border-radius: 100px;
-            }
-    
-            input {
-                width: 100%;
-                height: 60px;
-    
-                padding: 20px;
-                border-radius: 30px;
-    
-                font-style: normal;
-                font-weight: 500;
-                font-size: 16px;
-                line-height: 19px;
-            }
-    
-            input:focus {
-                outline: none;
-            }
-
-
-        }
-
-        .horapago {   
-            display: inline-block;
-            flex-basis:  auto;
-            align-items: center;
-            padding-top: 10px;
-
-            icon-container {
-    
-                width: 60px;
-                height: 60px;
-    
-                background-color: var(--secondary);
-    
-                border-radius: 100px;
-            }
-    
-            input {
-                width: 100%;
-                height: 60px;
-    
-                padding: 20px;
-                border-radius: 30px;
-    
-                font-style: normal;
-                font-weight: 500;
-                font-size: 16px;
-                line-height: 19px;
-            }
-    
-            input:focus {
-                outline: none;
-            }
-
-
-        }
-
-        .nombretitular{
-            icon-container {
-        
-                align-items: center;
-                margin-right: 1%;
-                padding-top: 10px;
-    
-                width: 60px;
-                height: 60px;
-    
-                background-color: var(--secondary);
-    
-                border-radius: 100px;
-            }
-    
-            input {
-                width: 100%;
-                height: 60px;
-                padding: 20px;
-                border-radius: 30px;
-    
-                font-style: normal;
-                font-weight: 500;
-                font-size: 16px;
-                line-height: 19px;
-            }
-    
-            input:focus {
-                outline: none;
-            }
-        }
-
-        .nombredequienpaga{
+        .grande{
             icon-container {
                 display: flex;
-                flex-basis: auto;
                 align-items: center;
-                padding-top: 10px;
+                margin-right: 1%;
+    
+                width: 60px;
+                height: 60px;
     
                 background-color: var(--secondary);
     
@@ -169,9 +67,7 @@
             input {
                 width: 100%;
                 height: 60px;
-    
                 padding: 20px;
-    
                 border-radius: 30px;
     
                 font-style: normal;
@@ -185,7 +81,7 @@
             }
         }
 
-        .concepto {   
+        .chico {   
             display: inline-block;
             flex-basis:  auto;
             align-items: center;
@@ -220,79 +116,9 @@
             }
 
 
-        }
-
-        .cantidad {   
-            display: inline-block;
-            flex-basis:  auto;
-            align-items: center;
-            padding-top: 10px;
-
-            icon-container {
-    
-                width: 60px;
-                height: 60px;
-    
-                background-color: var(--secondary);
-    
-                border-radius: 100px;
-            }
-    
-            input {
-                width: 100%;
-                height: 60px;
-    
-                padding: 20px;
-                border-radius: 30px;
-    
-                font-style: normal;
-                font-weight: 500;
-                font-size: 16px;
-                line-height: 19px;
-            }
-    
-            input:focus {
-                outline: none;
-            }
-
-
-        }
-
-        .tipodepago {   
-            display: inline-block;
-            flex-basis:  auto;
-            align-items: center;
-            padding-top: 10px;
-            padding-bottom: 10px;
-
-            icon-container {
-    
-                width: 60px;
-                height: 60px;
-    
-                background-color: var(--secondary);
-    
-                border-radius: 100px;
-            }
-    
-            input {
-                width: 100%;
-                height: 60px;
-    
-                padding: 20px;
-                border-radius: 30px;
-    
-                font-style: normal;
-                font-weight: 500;
-                font-size: 16px;
-                line-height: 19px;
-            }
-    
-            input:focus {
-                outline: none;
-            }
         }
     }
+
 
     .boton-container {
         display: flex;
