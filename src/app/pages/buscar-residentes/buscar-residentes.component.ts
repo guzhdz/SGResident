@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Residente } from 'src/app/shared/interfaces/residente.interface';
 import { BdService } from 'src/app/shared/services/bd.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-buscar-residentes',
@@ -12,10 +13,12 @@ export class BuscarResidentesComponent implements OnInit {
   residentes: Residente[] = [ ]
   buscar: string = "";
 
-  constructor(private bdSvc: BdService) { }
+  aparece = "show";
+
+  constructor(private bdSvc: BdService, private router: Router) { }
 
   ngOnInit(): void {
-    this.obtenerResidentes()
+    this.buscarResidente()
   }
 
   obtenerResidentes() {
@@ -27,9 +30,29 @@ export class BuscarResidentesComponent implements OnInit {
   }
 
   buscarResidente() {
-    this.bdSvc.obtenerResidenteNom(this.buscar).subscribe((value) => {
-      console.log(value)
-    });
+    if(this.buscar == "") 
+      this.obtenerResidentes()
+    else {
+      let subs = this.bdSvc.obtenerResidenteNom(this.buscar.toLocaleLowerCase()).subscribe((value) => {
+        this.residentes = value;
+      });
+
+      setTimeout(() => {subs.unsubscribe()}, 1000);
+    }
   }
 
+  irA(ruta: string) {
+    this.router.navigate([ruta]);
+  }
+
+  eliminarResidente(id: number | undefined) {
+    if(id != undefined) {
+      let subs = this.bdSvc.deshabilitarResidente(false, id).subscribe();
+
+      setTimeout(() => {subs.unsubscribe();
+        this.buscarResidente();}, 400);
+
+      
+    }
+  }
 }

@@ -14,7 +14,10 @@ const routes: Routes = [
   { path: 'detalles-residente', loadChildren: () => import('./pages/detalles-resiente/detalles-resiente.module').then(m => m.DetallesResienteModule) }, 
   { path: 'recuperar', loadChildren: () => import('./pages/recuperar/recuperar.module').then(m => m.RecuperarModule) }, 
   { path: 'facturas', loadChildren: () => import('./pages/facturas/facturas.module').then(m => m.FacturasModule) }, 
-  { path: 'detalles-fact', loadChildren: () => import('./pages/detalles-fact/detalles-fact.module').then(m => m.DetallesFactModule) }];
+  { path: 'detalles-fact', loadChildren: () => import('./pages/detalles-fact/detalles-fact.module').then(m => m.DetallesFactModule) },
+  {path: '', redirectTo: '/login', pathMatch: 'full'},
+  {path: '**', redirectTo: '', pathMatch: 'full'},
+];
 
 @NgModule({
   imports: [RouterModule.forRoot(routes)],

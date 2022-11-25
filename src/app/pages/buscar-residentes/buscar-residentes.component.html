@@ -9,24 +9,31 @@
             <mat-icon class="icon">search</mat-icon>
         </div>
         <input type="text" placeholder="Buscar residente por nombre" 
-        [(ngModel)]="buscar" (input)="buscarResidente()">
+        [(ngModel)]="buscar" (ngModelChange)="buscarResidente()">
     </div>
 
-    <div class="boton-container">
+    <div class="boton-container" (click)="irA('/agregar-residente')">
         <button>Agregar residente</button>
         <mat-icon class="icon">add_circle</mat-icon>
     </div>
 
-    <div class="residente" *ngFor="let residente of residentes">
+    <div class="residente" *ngFor="let residente of residentes" [ngClass]="aparece">
         <div class="info">
             <mat-icon class="icon">people</mat-icon>
             <span>{{residente.nombre + " " + residente.apellido_p + " " + residente.apellido_m}}</span>
         </div>
 
         <div class="options">
-            <button>Ver detalles</button>
-            <mat-icon class="icon primary medio">border_color</mat-icon>
-            <mat-icon class="icon danger">delete</mat-icon>
+            <button (click)="irA('/detalles-residente')">Ver detalles</button>
+            <mat-icon class="icon primary medio" (click)="irA('/modificar-residente')">border_color</mat-icon>
+            <mat-icon class="icon danger" (click)="eliminarResidente(residente.id_res)">delete</mat-icon>
         </div>
     </div>
+
+    <div class="no-encontrado show" *ngIf="residentes.length == 0">
+        <mat-icon class="icon">storage</mat-icon>
+        <span>No se han encontrado residentes registrados en la base de datos</span>
+    </div>
+
+    <br>
 </div>

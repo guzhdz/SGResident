@@ -3,7 +3,8 @@ import { CommonModule } from '@angular/common';
 
 import { BuscarPagosRoutingModule } from './buscar-pagos-routing.module';
 import { BuscarPagosComponent } from './buscar-pagos.component';
-import { ComponentsModule } from 'src/app/components.module';
+import { MaterialModule } from '../../material.module';
+import { ComponentsModule } from '../../components.module';
 
 
 @NgModule({
@@ -13,6 +14,7 @@ import { ComponentsModule } from 'src/app/components.module';
   imports: [
     CommonModule,
     BuscarPagosRoutingModule,
+    MaterialModule,
     ComponentsModule
   ]
 })

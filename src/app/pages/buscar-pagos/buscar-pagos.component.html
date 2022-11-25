@@ -1,1 +1,40 @@
 <app-header [opcion]="4"></app-header>
+<div class="buscar">
+    <div class="titulo-container">
+        <h1>Pagos de mantenimiento</h1>
+    </div>
+
+    <div class="buscador">
+        <div class="icon-container">
+            <mat-icon class="icon">search</mat-icon>
+        </div>
+        <input type="text" placeholder="Buscar pago por domicilio-num" 
+        [(ngModel)]="buscar" (ngModelChange)="buscarPago()">
+    </div>
+
+    <div class="boton-container" (click)="irA('/agregar-residente')">
+        <button>Agregar pago</button>
+        <mat-icon class="icon">add_circle</mat-icon>
+    </div>
+
+    <div class="residente" *ngFor="let pago of pagos" [ngClass]="aparece">
+        <div class="info">
+            <mat-icon class="icon">credit_card</mat-icon>
+            <span>{{pago.num_dom}}</span>
+        </div>
+
+        <div class="options">
+            <button (click)="irA('/detalles-fact')">Factura</button>
+            <button class="medio" (click)="irA('/detalles-residente')">Ver detalles</button>
+            <mat-icon class="icon primary medio" (click)="irA('/modificar-residente')">border_color</mat-icon>
+            <mat-icon class="icon danger" (click)="eliminarPago(pago.folio)">delete</mat-icon>
+        </div>
+    </div>
+
+    <div class="no-encontrado show" *ngIf="pagos.length == 0">
+        <mat-icon class="icon">storage</mat-icon>
+        <span>No se han encontrado pagos registrados en la base de datos</span>
+    </div>
+
+    <br>
+</div>

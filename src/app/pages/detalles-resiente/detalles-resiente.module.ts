@@ -3,6 +3,8 @@ import { CommonModule } from '@angular/common';
 
 import { DetallesResienteRoutingModule } from './detalles-resiente-routing.module';
 import { DetallesResienteComponent } from './detalles-resiente.component';
+import { MaterialModule } from '../../material.module';
+import { ComponentsModule } from '../../components.module';
 
 
 @NgModule({
@@ -11,7 +13,9 @@ import { DetallesResienteComponent } from './detalles-resiente.component';
   ],
   imports: [
     CommonModule,
-    DetallesResienteRoutingModule
+    DetallesResienteRoutingModule,
+    MaterialModule,
+    ComponentsModule
   ]
 })
 export class DetallesResienteModule { }

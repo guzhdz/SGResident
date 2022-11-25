@@ -24,6 +24,7 @@ export class HeaderComponent implements OnInit {
   }
 
   seleccionarOpcion() {
+    if(this.opcion != -1) 
     this.barra[this.opcion] = "op-selected";
   }
 
