@@ -83,9 +83,8 @@ app.get(`${rootUrl}/residentes/:id`, (req, res) => {
 
 app.get(`${rootUrl}/residenteNom/:nombre`, (req, res) => {
   const {nombre} = req.params;
-  console.log(nombre);
   ;(async () => {
-      const q = (`SELECT * FROM residentes WHERE concat(nombre, ' ', apellido_p, ' ', apellido_m)
+      const q = (`SELECT * FROM residentes WHERE concat(LOWER(nombre), ' ', LOWER(apellido_p), ' ', LOWER(apellido_m))
       LIKE '%${nombre}%' AND habilitado = true`);
       const { rows } = await pool.query(q);
       res.json(rows);
@@ -279,10 +278,38 @@ app.get(`${rootUrl}/pagosH/:habilitado`, (req, res) => {
   })
 });
 
+app.get(`${rootUrl}/pagosDom/:habilitado`, (req, res) => { 
+  const {habilitado} = req.params;
+  ;(async () => {
+      const q = (`SELECT pagos.folio, casas.num_dom FROM pagos 
+      INNER JOIN residentes ON residentes.id_res = pagos.id_res
+      JOIN casas ON casas.id_casa = residentes.id_casa WHERE pagos.habilitado = ${habilitado}`);
+      const { rows } = await pool.query(q);
+      res.json(rows);
+    })().catch(err => {
+      res.json(err.stack)
+  })
+});
+
 app.get(`${rootUrl}/pagosC/:habilitado`, (req, res) => {
   const {habilitado} = req.params;
   ;(async () => {
       const q = (`SELECT COUNT(folio) FROM pagos WHERE habilitado = ${habilitado}`);
+      const { rows } = await pool.query(q);
+      res.json(rows);
+    })().catch(err => {
+      res.json(err.stack)
+  })
+});
+
+app.get(`${rootUrl}/pagosDomE/:domicilio`, (req, res) => {
+  const {domicilio} = req.params;
+  ;(async () => {
+      const q = (`SELECT pagos.folio, casas.num_dom FROM pagos 
+      INNER JOIN residentes ON residentes.id_res = pagos.id_res
+      JOIN casas ON casas.id_casa = residentes.id_casa
+      where LOWER(casas.num_dom) LIKE '%${domicilio}%' AND pagos.habilitado = true
+      `);
       const { rows } = await pool.query(q);
       res.json(rows);
     })().catch(err => {

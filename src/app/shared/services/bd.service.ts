@@ -5,6 +5,7 @@ import { Login } from '../interfaces/login.interface';
 import { Residente } from '../interfaces/residente.interface';
 import { Casa } from '../interfaces/casa.interface';
 import { Pago } from '../interfaces/pago.interface';
+import { PagoDom } from '../interfaces/pagoDom.interface';
 
 @Injectable({
   providedIn: 'root'
@@ -88,6 +89,14 @@ export class BdService {
 
   obtenerPagosH(habilitado: boolean): Observable<Pago[]> {
     return this.http.get<Pago[]>(`${this.apiUrl}/pagosH/${habilitado}`);
+  }
+
+  obtenerPagosDomE(domicilio: string): Observable<PagoDom[]> {
+    return this.http.get<PagoDom[]>(`${this.apiUrl}/pagosDomE/${domicilio}`);
+  }
+
+  obtenerPagosDomG(habilitado: boolean): Observable<PagoDom[]> {
+    return this.http.get<PagoDom[]>(`${this.apiUrl}/pagosDom/${habilitado}`);
   }
 
   obtenerPago(id: number): Observable<Pago[]> {
