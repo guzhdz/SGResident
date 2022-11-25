@@ -3,6 +3,7 @@ import { CommonModule } from '@angular/common';
 
 import { RecuperarRoutingModule } from './recuperar-routing.module';
 import { RecuperarComponent } from './recuperar.component';
+import { ComponentsModule } from 'src/app/components.module';
 
 
 @NgModule({
@@ -11,7 +12,8 @@ import { RecuperarComponent } from './recuperar.component';
   ],
   imports: [
     CommonModule,
-    RecuperarRoutingModule
+    RecuperarRoutingModule,
+    ComponentsModule
   ]
 })
 export class RecuperarModule { }
