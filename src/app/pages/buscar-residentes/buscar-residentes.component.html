@@ -24,7 +24,7 @@
         </div>
 
         <div class="options">
-            <button (click)="irADetalles(residente.id_res || 0)">Ver detalles</button>
+            <button (click)="irA('/detalles-residente')">Ver detalles</button>
             <mat-icon class="icon primary medio" (click)="irA('/modificar-residente')">border_color</mat-icon>
             <mat-icon class="icon danger" (click)="eliminarResidente(residente.id_res)">delete</mat-icon>
         </div>

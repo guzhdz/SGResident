@@ -49,16 +49,6 @@ export class BdService {
     return this.http.post(`${this.apiUrl}/residentes`, residente);
   }
 
-  agregarResidenteActualizado(residente: Residente, casa: Casa) {
-    let subs = this.http.post(`${this.apiUrl}/casasE`, casa).subscribe((value: any) => {
-      residente.id_casa = value[0].id_casa;
-      let subs2 = this.http.post(`${this.apiUrl}/residentes`, residente).subscribe();
-      setTimeout(() => {subs2.unsubscribe()}, 1000);
-    });
-
-    setTimeout(() => {subs.unsubscribe()}, 1000);
-  }
-
   eliminarResidente(id: number) {
     return this.http.delete(`${this.apiUrl}/residentes/${id}`);
   }
@@ -95,10 +85,6 @@ export class BdService {
   //Pagos
   obtenerPagos(): Observable<Pago[]> {
     return this.http.get<Pago[]>(`${this.apiUrl}/pagos`);
-  }
-
-  obtenerPagosResidente(id_res: number): Observable<Pago[]> {
-    return this.http.get<Pago[]>(`${this.apiUrl}/pagosR/${id_res}`);
   }
 
   obtenerPagosH(habilitado: boolean): Observable<Pago[]> {
