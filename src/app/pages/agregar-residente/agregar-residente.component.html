@@ -4,64 +4,55 @@
         <h1>Agregar nuevo residente</h1>
     </div>
 
-    <div class="principal">
+    <div class="subtitulo-container">
        <h2>Ingrese los datos del nuevo residente</h2>
     </div>
 
-    <div class="contadores">
-        <div class="residentes">
-            <span class="cifra">30</span>
-            <span class="nombre">Residentes registrados</span>
+
+    <div class="datos">
+
+        <div class="nombre">
+            <input type="text" placeholder="Nombre completo"
+            [(ngModel)]="nombre" (input)="Nombre()">
         </div>
-    
-        <div class="pagos">
-            <span class="cifra">250</span>
-            <span class="nombre">Pagos guardados</span>
+
+
+        <div class="sexo">
+            <input type="text" placeholder="Sexo">
+
         </div>
-    
-        <div class="archivados">
-            <span class="cifra">130</span>
-            <span class="nombre">Datos archivados</span>
+
+        <div class="edad">
+            <input type="text" placeholder="Edad">
         </div>
+
+        <div class="telefono">
+            <input type="text" placeholder="Telefono">
+        </div>
+
+        <div class="domicilio">
+            <input type="text" placeholder="Domicilio y numero de casa">
+        </div>
+
+        <div class="calle1">
+            <input type="text" placeholder="Entre calle 1">
+        </div>
+
+        <div class="calle2">
+            <input type="text" placeholder="Entre calle 2">
+        </div>
+
+        <div class="referencia">
+            <input type="text" placeholder="Referencia">
+        </div>
+
     </div>
 
 
-    <div class="subtitulo">
-        <h2>Herramientas</h2>
-    </div>
 
-    <div class="herr-container">
-        <div class="herramientas">
-            <div class="herramientas-group">
-                <div class="herramienta derecha blanco">
-                    <mat-icon class="icon">people</mat-icon>
-                    <span class="herramienta-texto">Ver facturas generadas</span>
-                    <mat-icon class="icon">more_vert</mat-icon>
-                </div>
-        
-                <div class="herramienta blanco">
-                    <mat-icon class="icon">restore_from_trash</mat-icon>
-                    <span>Ver recuperar eliminados</span>
-                    <mat-icon class="icon">more_vert</mat-icon>
-                </div>
-            </div>
-        
-            <div class="herramientas-group">
-                <div class="herramienta derecha prim">
-                    <mat-icon class="icon">people</mat-icon>
-                    <span>Listado de todos los residentes</span>
-                    <mat-icon class="icon">more_vert</mat-icon>
-                </div>
-        
-                <div class="herramienta prim">
-                    <mat-icon class="icon">credit_card</mat-icon>
-                    <span>Listado de todos los pagos</span>
-                    <mat-icon class="icon">more_vert</mat-icon>
-                </div>
-            </div>
-        </div>
-    
-        <img src="/assets/casa.png" alt="Imagen casa">
+    <div class="boton-container">
+        <button>Aceptar</button>
+        <mat-icon class="icon">add_circle</mat-icon>
     </div>
    
 </div>
