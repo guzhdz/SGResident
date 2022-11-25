@@ -97,6 +97,10 @@ export class BdService {
     return this.http.get<Pago[]>(`${this.apiUrl}/pagos`);
   }
 
+  obtenerPagosResidente(id_res: number): Observable<Pago[]> {
+    return this.http.get<Pago[]>(`${this.apiUrl}/pagosR/${id_res}`);
+  }
+
   obtenerPagosH(habilitado: boolean): Observable<Pago[]> {
     return this.http.get<Pago[]>(`${this.apiUrl}/pagosH/${habilitado}`);
   }

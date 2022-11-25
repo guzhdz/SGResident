@@ -8,7 +8,7 @@
         <div class="row-data1">
             <div class="data">
                 <span class="titulo">Nombre:</span>
-                <span>Gustavo Hernández Cano</span>
+                <span>{{residente.nombre}} {{residente.apellido_p}} {{residente.apellido_m}}</span>
             </div>
 
             <mat-icon class="icon">people</mat-icon>
@@ -17,42 +17,72 @@
         <div class="row-data">
             <div class="data">
                 <span class="titulo">Sexo:</span>
-                <span>Maculino</span>
+                <span *ngIf="residente.sexo == 'm'">Masculino</span>
+                <span *ngIf="residente.sexo == 'f'">Femenino</span>
             </div>
 
             <div class="data center">
                 <span class="titulo">Edad:</span>
-                <span>21 años</span>
+                <span>{{residente.edad}} años</span>
             </div>
 
             <div class="data">
                 <span class="titulo">Telefono:</span>
-                <span>3315784525</span>
+                <span>{{residente.telefono}}</span>
             </div>
         </div>
 
         <div class="row-data">
             <div class="data">
                 <span class="titulo">Direccion y numero de casa:</span>
-                <span>Av. Colon #1236 Num 1</span>
+                <span>{{casa.num_dom}}</span>
             </div>
 
             <div class="data center">
                 <span class="titulo">Entre calle 1:</span>
-                <span>Americas</span>
+                <span>{{casa.vialidad_1}}</span>
             </div>
 
             <div class="data">
                 <span class="titulo">Entre calle 2:</span>
-                <span>Continente</span>
+                <span>{{casa.vialidad_2}}</span>
             </div>
         </div>
 
         <div class="row-data">
             <div class="data">
                 <span class="titulo">Descripcion:</span>
-                <span>Reja negra alta y fachada color blanco</span>
+                <span>{{casa.referencias}}</span>
             </div>
+        </div>
+
+        <div class="row-data2">
+            <div class="lista">
+                <span class="titulo">Pagos realizados:</span>
+                <div class="pago" *ngFor="let pago of pagos">
+                    <mat-icon class="icon">credit_card</mat-icon>
+                    <span>{{pago.fecha_pago}}</span>
+                </div>
+            </div>
+
+            <div class="lista izquierda">
+                <span class="titulo">Meses por pagar:</span>
+                <div class="pago red">
+                    <mat-icon class="icon color">credit_card</mat-icon>
+                    <span class="color">Enero</span>
+                </div>
+    
+                <div class="pago red">
+                    <mat-icon class="icon color">credit_card</mat-icon>
+                    <span class="color">Febrero</span>
+                </div>
+    
+                <div class="pago red">
+                    <mat-icon class="icon color">credit_card</mat-icon>
+                    <span class="color">Marzo</span>
+                </div>
+            </div>
+
         </div>
 
         <div class="boton">

@@ -284,6 +284,17 @@ app.get(`${rootUrl}/pagos/:id`, (req, res) => {
   })
 });
 
+app.get(`${rootUrl}/pagosR/:id_res`, (req, res) => { 
+  ;(async () => {
+    const {id_res} = req.params; 
+      const q = (`SELECT * FROM pagos WHERE id_res = ${id_res} AND habilitado = true`);
+      const { rows } = await pool.query(q);
+      res.json(rows);
+    })().catch(err => {
+      res.json(err.stack)
+  })
+});
+
 app.get(`${rootUrl}/pagosH/:habilitado`, (req, res) => { 
   const {habilitado} = req.params;
   ;(async () => {
