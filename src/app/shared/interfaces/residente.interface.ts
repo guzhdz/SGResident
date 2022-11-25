@@ -1,5 +1,5 @@
 export interface Residente {
-    id_res?: number,
+    id_res: number,
 	nombre: string,
 	apellido_p: string,
 	apellido_m: string,

@@ -11,6 +11,7 @@ import { ComponentsModule } from 'src/app/components.module';
 
 
 
+
 @NgModule({
     declarations: [
         AgregarResidenteComponent,
@@ -19,7 +20,7 @@ import { ComponentsModule } from 'src/app/components.module';
         CommonModule,
         AgregarResidenteRoutingModule,
         MaterialModule,
-        ComponentsModule
+        ComponentsModule,
     ]
 })
 export class AgregarResidenteModule { }
