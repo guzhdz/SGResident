@@ -45,6 +45,10 @@ export class BuscarResidentesComponent implements OnInit {
     this.router.navigate([ruta]);
   }
 
+  irADetalles(id_res: number) {
+    this.router.navigate(['/detalles-residente'], {queryParams: {id_res: id_res}});
+  }
+
   eliminarResidente(id: number | undefined) {
     if(id != undefined) {
       let subs = this.bdSvc.deshabilitarResidente(false, id).subscribe();
