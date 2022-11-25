@@ -216,6 +216,23 @@ app.post(`${rootUrl}/casas`, (req, res) => {
   })
 });
 
+app.post(`${rootUrl}/casasE`, (req, res) => {
+  const {
+    num_dom,
+    vialidad_1,
+    vialidad_2,
+    referencias
+  } = req.body;
+  ;(async () => {
+      const q = (`INSERT INTO casas VALUES 
+      (DEFAULT, '${num_dom}', '${vialidad_1}', '${vialidad_2}', '${referencias}') RETURNING id_casa;`);
+      const {rows} = await pool.query(q);
+      res.json(rows);
+    })().catch(err => {
+      res.json(err.stack)
+  })
+});
+
 app.delete(`${rootUrl}/casas/:id`, (req, res) => {
   const {id} = req.params;
   ;(async () => {
