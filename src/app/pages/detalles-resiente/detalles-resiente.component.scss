@@ -102,6 +102,106 @@
             }
 
         }
+
+        .boton {
+            display: flex;
+            justify-content: right;
+
+            button {
+                width: 30%;
+
+                font-style: normal;
+                font-weight: 500;
+                font-size: 20px;
+                line-height: 24px;
+                text-align: center;
+                
+                padding: 6px;
+
+                
+
+                border: none;
+                border-radius: 20px;
+                background-color: var(--tertiary-light);
+            }
+
+            button:hover {
+                background-color: #F1F1DF;
+
+                cursor: pointer;
+
+                transition: all 0.05s ease-in-out;
+            }
+        }
+
+        .row-data2 {
+            display: flex;
+            flex-direction: row;
+            align-items: center;
+
+            .lista {
+                display: flex;
+                flex-direction: column;
+
+                span {
+                    
+                }
+
+                .titulo {
+                    margin-bottom: 5px;
+                    font-style: normal;
+                    font-weight: 500;
+                    font-size: 18px;
+                    line-height: 22px;
+
+                    color: #FFFF;
+                }
+
+                .pago {
+                    display: flex;
+                    flex-direction: row;
+                    align-items: center;
+
+                    padding: 4px;
+
+                    border-radius: 8px;
+
+                    background-color: var(--primary);
+
+                    margin-bottom: 8px;
+
+                    .icon {
+                        color: #FFFF;
+                        width: 30px;
+                        height: 30px;
+
+                        font-size: 30px;
+                    }
+
+                    span {
+                        color: #FFFF;
+                        margin-left: 5%;
+                        font-style: normal;
+                        font-weight: 500;
+                        font-size: 15px;
+                        line-height: 18px;
+                    }
+
+                    .color {
+                        color: var(--primary);
+                    }
+                }
+
+                .red {
+                    background-color: var(--tertiary);
+                }
+
+            }
+
+            .izquierda {
+                margin-left: 8%;
+            }
+        }
     }
 
 
