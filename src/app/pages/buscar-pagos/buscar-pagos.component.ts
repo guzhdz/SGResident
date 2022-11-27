@@ -1,7 +1,9 @@
 import { Component, OnInit } from '@angular/core';
+import { MatDialog } from '@angular/material/dialog';
 import { Router } from '@angular/router';
 import { PagoDom } from 'src/app/shared/interfaces/pagoDom.interface';
 import { BdService } from 'src/app/shared/services/bd.service';
+import { AlertaEliminarComponent } from './components/alerta-eliminar/alerta-eliminar.component';
 
 @Component({
   selector: 'app-buscar-pagos',
@@ -15,7 +17,7 @@ export class BuscarPagosComponent implements OnInit {
 
   aparece = "show";
 
-  constructor(private bdSvc: BdService, private router: Router) { }
+  constructor(private bdSvc: BdService, private router: Router, public alerta: MatDialog) { }
 
   ngOnInit(): void {
     this.buscarPago()
@@ -49,11 +51,25 @@ export class BuscarPagosComponent implements OnInit {
     this.router.navigate(['/detalles-pago'], {queryParams: {folio: folio}});
   }
 
+  async eliminarAlerta(id: number, dom: string) {
+    const dialogRef = this.alerta.open(AlertaEliminarComponent, {
+      width: '400px',
+      height: '200px',
+      data: {dom: dom, borrar: true},
+    });
+
+    await dialogRef.afterClosed().subscribe(result => {
+      if(result.borrar)
+      this.eliminarPago(id);
+    });
+  }
+
   async eliminarPago(id: number) {
       let subs = await this.bdSvc.deshabilitarPago(false, id).subscribe();
 
-      setTimeout(() => {subs.unsubscribe();
-         this.buscarPago();}, 400);
+      setTimeout(() => {this.buscarPago()}, 300);
+      
+      setTimeout(() => {subs.unsubscribe()}, 1000); 
   }
 
 }

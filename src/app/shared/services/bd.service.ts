@@ -6,6 +6,7 @@ import { Residente } from '../interfaces/residente.interface';
 import { Casa } from '../interfaces/casa.interface';
 import { Pago } from '../interfaces/pago.interface';
 import { PagoDom } from '../interfaces/pagoDom.interface';
+import { Factura } from '../interfaces/facturas.interface';
 
 @Injectable({
   providedIn: 'root'
@@ -113,6 +114,10 @@ export class BdService {
     return this.http.get<PagoDom[]>(`${this.apiUrl}/pagosDom/${habilitado}`);
   }
 
+  obtenerPagoDom(folio: number): Observable<PagoDom[]> {
+    return this.http.get<PagoDom[]>(`${this.apiUrl}/pagoDom/${folio}`);
+  }
+
   obtenerMeses(id_res: number, ano: number): Observable<any[]> {
     return this.http.get<any[]>(`${this.apiUrl}/mesesR/${id_res}/${ano}`);
   }
@@ -139,5 +144,30 @@ export class BdService {
 
   deshabilitarPago(habilitado: boolean, id: number) {
     return this.http.put(`${this.apiUrl}/pagosH/${id}`, {habilitado: habilitado});
+  }
+
+  //Facturas
+  obtenerFacturas(): Observable<Factura[]> {
+    return this.http.get<Factura[]>(`${this.apiUrl}/facturas`);
+  }
+
+  obtenerFactura(id: number): Observable<Factura[]> {
+    return this.http.get<Factura[]>(`${this.apiUrl}/factura/${id}`);
+  }
+
+  obtenerFacturaP(folio: number): Observable<Factura[]> {
+    return this.http.get<Factura[]>(`${this.apiUrl}/facturaP/${folio}`);
+  }
+
+  agregarFactura(factura: Factura) {
+    return this.http.post(`${this.apiUrl}/facturas`, factura);
+  }
+
+  eliminarFactura(id: number) {
+    return this.http.delete(`${this.apiUrl}/facturas/${id}`);
+  }
+
+  modificarFactura(factura: Factura, id: number) {
+    return this.http.put(`${this.apiUrl}/facturas/${id}`, factura);
   }
 }

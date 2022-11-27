@@ -62,12 +62,9 @@ export class BuscarResidentesComponent implements OnInit {
       if(result.borrar)
       this.eliminarResidente(id);
     });
-
-    
   }
 
   async eliminarResidente(id: number | undefined) {
-    console.log(id)
     if(id != undefined) {
       let subs = await this.bdSvc.deshabilitarResidente(false, id).subscribe((value) => {});
 

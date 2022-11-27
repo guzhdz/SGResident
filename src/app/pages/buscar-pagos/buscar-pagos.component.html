@@ -21,13 +21,14 @@
         <div class="info">
             <mat-icon class="icon">credit_card</mat-icon>
             <span>{{pago.num_dom}}</span>
+            <span class="center">{{pago.fecha_pago.substring(0, 10)}}</span>
         </div>
 
         <div class="options">
             <button (click)="irA('/detalles-fact')">Factura</button>
             <button class="medio" (click)="irADetalles(pago.folio || 0)">Ver detalles</button>
             <mat-icon class="icon primary medio" (click)="irA('/modificar-residente')">border_color</mat-icon>
-            <mat-icon class="icon danger" (click)="eliminarPago(pago.folio)">delete</mat-icon>
+            <mat-icon class="icon danger" (click)="eliminarAlerta(pago.folio, pago.num_dom)">delete</mat-icon>
         </div>
     </div>
 

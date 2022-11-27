@@ -1,0 +1,12 @@
+<div class="alert-container">
+    <span class="title">Eliminar Residente</span>
+
+    <p>¿Estas seguro de que quieres eliminar el pago de {{datos.dom}} de la
+        lista de pagos?
+    </p>
+
+    <div mat-dialog-actions>
+        <button (click)="no()">Cancelar</button>
+        <button mat-button [mat-dialog-close]="datos" cdkFocusInitial class="red">Eliminar</button>
+    </div>
+</div>

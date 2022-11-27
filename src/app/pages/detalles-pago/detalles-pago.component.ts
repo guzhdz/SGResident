@@ -3,6 +3,7 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { Pago } from 'src/app/shared/interfaces/pago.interface';
 import { Residente } from 'src/app/shared/interfaces/residente.interface';
 import { BdService } from '../../shared/services/bd.service';
+import { PagoDom } from '../../shared/interfaces/pagoDom.interface';
 
 @Component({
   selector: 'app-detalles-pago',
@@ -27,6 +28,7 @@ export class DetallesPagoComponent implements OnInit {
   }
 
   nombreResidente: string = "";
+  domicilio: string = "";
 
   indicePago: number = 0;
 
@@ -41,12 +43,14 @@ export class DetallesPagoComponent implements OnInit {
         this.pago = value[0];
         let subs3 = this.bdSvc.obtenerResidente(this.pago.id_res).subscribe((value: Residente[]) => {
           this.nombreResidente = value[0].nombre + " " + value[0].apellido_p + " " + value[0].apellido_m;
-
-          setTimeout(() => {
-            subs3.unsubscribe();
-            subs2.unsubscribe();
-            subs.unsubscribe();
-          }, 1000);
+          let subs4 = this.bdSvc.obtenerPagoDom(this.indicePago).subscribe((value: PagoDom[]) => {
+            this.domicilio = value[0].num_dom;
+            setTimeout(() => {
+              subs3.unsubscribe();
+              subs2.unsubscribe();
+              subs.unsubscribe();
+            }, 1000);
+          });
         });
       });
     });

@@ -321,9 +321,22 @@ app.get(`${rootUrl}/pagosH/:habilitado`, (req, res) => {
 app.get(`${rootUrl}/pagosDom/:habilitado`, (req, res) => { 
   const {habilitado} = req.params;
   ;(async () => {
-      const q = (`SELECT pagos.folio, casas.num_dom FROM pagos 
+      const q = (`SELECT pagos.folio, casas.num_dom, pagos.fecha_pago FROM pagos 
       INNER JOIN residentes ON residentes.id_res = pagos.id_res
       JOIN casas ON casas.id_casa = residentes.id_casa WHERE pagos.habilitado = ${habilitado}`);
+      const { rows } = await pool.query(q);
+      res.json(rows);
+    })().catch(err => {
+      res.json(err.stack)
+  })
+});
+
+app.get(`${rootUrl}/pagoDom/:folio`, (req, res) => { 
+  const {folio} = req.params;
+  ;(async () => {
+      const q = (`SELECT pagos.folio, casas.num_dom, pagos.fecha_pago FROM pagos 
+      INNER JOIN residentes ON residentes.id_res = pagos.id_res
+      JOIN casas ON casas.id_casa = residentes.id_casa WHERE pagos.folio = ${folio}`);
       const { rows } = await pool.query(q);
       res.json(rows);
     })().catch(err => {
@@ -386,7 +399,7 @@ app.delete(`${rootUrl}/pagos/:id`, (req, res) => {
   ;(async () => {
       const q = (`DELETE FROM pagos WHERE folio = ${id}`);
       await pool.query(q);
-      res.json({status: "Casa eliminado"});
+      res.json({status: "Pago eliminado"});
     })().catch(err => {
       res.json(err.stack)
   })
@@ -424,6 +437,92 @@ app.put(`${rootUrl}/pagosH/:id`, (req, res) => {
 
   ;(async () => {
       const q = (`UPDATE pagos SET habilitado = ${habilitado} WHERE folio = ${id}`);
+      await pool.query(q);
+      res.json({status: "Pago modificado"});
+    })().catch(err => {
+      res.json(err.stack)
+  })
+});
+
+//Facturas
+app.get(`${rootUrl}/facturas`, (req, res) => {
+  ;(async () => {
+      const q = (`SELECT * FROM facturas`);
+      const { rows } = await pool.query(q);
+      res.json(rows);
+    })().catch(err => {
+      res.json(err.stack)
+  })
+});
+
+app.get(`${rootUrl}/factura/:id`, (req, res) => { 
+  ;(async () => {
+    const {id} = req.params; 
+      const q = (`SELECT * FROM facturas WHERE folio = ${id}`);
+      const { rows } = await pool.query(q);
+      res.json(rows);
+    })().catch(err => {
+      res.json(err.stack)
+  })
+});
+
+app.get(`${rootUrl}/facturaP/:folio`, (req, res) => { 
+  ;(async () => {
+    const {folio} = req.params; 
+      const q = (`SELECT * FROM facturas WHERE folio_p = ${folio}`);
+      const { rows } = await pool.query(q);
+      res.json(rows);
+    })().catch(err => {
+      res.json(err.stack)
+  })
+});
+
+app.post(`${rootUrl}/facturas`, (req, res) => {
+  const {
+    rfc,
+    fecha,
+    hora,
+    importe_total,
+    concepto,
+    metodo_pago,
+    folio_p
+  } = req.body;
+  ;(async () => {
+      const q = (`INSERT INTO facturas VALUES
+      (DEFAULT, '${rfc}' '${fecha}', '${hora}', ${importe_total}, '${concepto}', 
+      '${metodo_pago}', ${folio_p});`);
+      await pool.query(q);
+      res.json({status: "Factura agregada"});
+    })().catch(err => {
+      res.json(err.stack)
+  })
+});
+
+app.delete(`${rootUrl}/factura/:id`, (req, res) => {
+  const {id} = req.params;
+  ;(async () => {
+      const q = (`DELETE FROM facturas WHERE folio = ${id}`);
+      await pool.query(q);
+      res.json({status: "Factura eliminada"});
+    })().catch(err => {
+      res.json(err.stack)
+  })
+});
+
+app.put(`${rootUrl}/facturas/:id`, (req, res) => {
+  const {id} = req.params;
+  const {
+    rfc,
+    fecha,
+    hora,
+    importe_total,
+    concepto,
+    metodo_pago,
+    folio_p
+  } = req.body;
+  ;(async () => {
+      const q = (`UPDATE pagos SET rfc = '${rfc}', fecha = '${fecha}' hora = '${hora}', importe_toral = ${importe_total},
+      concepto = '${concepto}', metodo_pago = '${metodo_pago}', folio_p = ${folio_p},  WHERE folio = ${id}`);
       await pool.query(q);
       res.json({status: "Pago modificado"});
     })().catch(err => {
