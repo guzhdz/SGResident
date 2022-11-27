@@ -5,6 +5,8 @@ import { AgregarPagoRoutingModule } from './agregar-pago-routing.module';
 import { AgregarPagoComponent } from './agregar-pago.component';
 import { MaterialModule } from 'src/app/material.module';
 import { ComponentsModule } from 'src/app/components.module';
+import { MatSelectModule } from '@angular/material/select';
+
 
 
 @NgModule({
@@ -15,7 +17,9 @@ import { ComponentsModule } from 'src/app/components.module';
     CommonModule,
     AgregarPagoRoutingModule,
     MaterialModule,
-    ComponentsModule
+    ComponentsModule,
+    MatSelectModule
+ 
   ]
 })
 export class AgregarPagoModule { }
