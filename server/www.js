@@ -295,6 +295,18 @@ app.get(`${rootUrl}/pagosR/:id_res`, (req, res) => {
   })
 });
 
+app.get(`${rootUrl}/mesesR/:id_res/:ano`, (req, res) => { 
+  ;(async () => {
+    const {id_res, ano} = req.params; 
+      const q = (`SELECT EXTRACT(MONTH FROM fecha_pago) as mes FROM pagos WHERE id_res = ${id_res} 
+      AND EXTRACT(YEAR FROM fecha_pago) = ${ano} AND habilitado = true`);
+      const { rows } = await pool.query(q);
+      res.json(rows);
+    })().catch(err => {
+      res.json(err.stack)
+  })
+});
+
 app.get(`${rootUrl}/pagosH/:habilitado`, (req, res) => { 
   const {habilitado} = req.params;
   ;(async () => {

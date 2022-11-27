@@ -2,6 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import { Residente } from 'src/app/shared/interfaces/residente.interface';
 import { BdService } from 'src/app/shared/services/bd.service';
 import { Router } from '@angular/router';
+import { MatDialog } from '@angular/material/dialog';
+import { AlertaEliminarComponent } from './components/alerta-eliminar/alerta-eliminar.component';
 
 @Component({
   selector: 'app-buscar-residentes',
@@ -15,7 +17,7 @@ export class BuscarResidentesComponent implements OnInit {
 
   aparece = "show";
 
-  constructor(private bdSvc: BdService, private router: Router) { }
+  constructor(private bdSvc: BdService, private router: Router, public alerta: MatDialog) { }
 
   ngOnInit(): void {
     this.buscarResidente()
@@ -49,14 +51,29 @@ export class BuscarResidentesComponent implements OnInit {
     this.router.navigate(['/detalles-residente'], {queryParams: {id_res: id_res}});
   }
 
-  eliminarResidente(id: number | undefined) {
+  async eliminarAlerta(id: number | undefined, nombre: string) {
+    const dialogRef = this.alerta.open(AlertaEliminarComponent, {
+      width: '400px',
+      height: '200px',
+      data: {nombre: nombre, borrar: true},
+    });
+
+    await dialogRef.afterClosed().subscribe(result => {
+      if(result.borrar)
+      this.eliminarResidente(id);
+    });
+
+    
+  }
+
+  async eliminarResidente(id: number | undefined) {
+    console.log(id)
     if(id != undefined) {
-      let subs = this.bdSvc.deshabilitarResidente(false, id).subscribe();
+      let subs = await this.bdSvc.deshabilitarResidente(false, id).subscribe((value) => {});
 
-      setTimeout(() => {subs.unsubscribe();
-        this.buscarResidente();}, 400);
-
+      setTimeout(() => {this.buscarResidente()}, 300);
       
+      setTimeout(() => {subs.unsubscribe()}, 1000); 
     }
   }
 }

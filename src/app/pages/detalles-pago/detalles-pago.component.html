@@ -1,1 +1,57 @@
-<p>detalles-pago works!</p>
+<app-header [opcion]="-1"></app-header>
+<div class="detalles">
+    <div class="titulo-container">
+        <h1>Detalles Residente</h1>
+    </div>
+
+    <div class="contenido-container show">
+        <div class="row-data1">
+            <div class="data">
+                <span class="titulo">Fecha de pago:</span>
+                <span>{{pago.fecha_pago.substring(0, 10)}}</span>
+            </div>
+
+            <div class="data center">
+                <span class="titulo">Hora de pago:</span>
+                <span>{{pago.hora_pago.substring(0, 5)}} Hrs</span>
+            </div>
+
+            <mat-icon class="icon">credit_card</mat-icon>
+        </div>
+
+        <div class="row-data">
+            <div class="data">
+                <span class="titulo">Nombre residente titular:</span>
+                <span>{{nombreResidente}}</span>
+            </div>
+
+            <div class="data center">
+                <span class="titulo">Nombre del que paga:</span>
+                <span>{{pago.nombre_pag}} {{pago.apellido_p_pag}} {{pago.apellido_m_pag}}</span>
+            </div>
+        </div>
+
+        <div class="row-data">
+            <div class="data">
+                <span class="titulo">Concepto del pago:</span>
+                <span>{{pago.concepto}}</span>
+            </div>
+
+            <div class="data center">
+                <span class="titulo">Cantidad a pagar:</span>
+                <span>{{pago.cantidad_pagar | currency}}</span>
+            </div>
+        </div>
+
+        <div class="row-data">
+            <div class="data">
+                <span class="titulo">Metodo de pago:</span>
+                <span>{{pago.tipo_pago}}</span>
+            </div>
+        </div>
+
+        <div class="boton">
+            <button (click)="irA('/buscar-pagos')">Aceptar</button>
+        </div>
+    </div>
+</div>

@@ -25,7 +25,7 @@
 
         <div class="options">
             <button (click)="irA('/detalles-fact')">Factura</button>
-            <button class="medio" (click)="irA('/detalles-residente')">Ver detalles</button>
+            <button class="medio" (click)="irADetalles(pago.folio || 0)">Ver detalles</button>
             <mat-icon class="icon primary medio" (click)="irA('/modificar-residente')">border_color</mat-icon>
             <mat-icon class="icon danger" (click)="eliminarPago(pago.folio)">delete</mat-icon>
         </div>

@@ -5,7 +5,7 @@ export interface Residente {
 	apellido_m: string,
 	sexo: string,
 	fecha_nacimiento: string,
-	edad: null,
+	edad: number,
 	telefono: string,
 	habilitado: boolean,
 	id_casa: number

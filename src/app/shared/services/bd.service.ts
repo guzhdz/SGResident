@@ -113,6 +113,10 @@ export class BdService {
     return this.http.get<PagoDom[]>(`${this.apiUrl}/pagosDom/${habilitado}`);
   }
 
+  obtenerMeses(id_res: number, ano: number): Observable<any[]> {
+    return this.http.get<any[]>(`${this.apiUrl}/mesesR/${id_res}/${ano}`);
+  }
+
   obtenerPago(id: number): Observable<Pago[]> {
     return this.http.get<Pago[]>(`${this.apiUrl}/pagos/${id}`);
   }

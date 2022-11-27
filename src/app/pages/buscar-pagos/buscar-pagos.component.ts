@@ -45,6 +45,10 @@ export class BuscarPagosComponent implements OnInit {
     this.router.navigate([ruta]);
   }
 
+  irADetalles(folio: number) {
+    this.router.navigate(['/detalles-pago'], {queryParams: {folio: folio}});
+  }
+
   async eliminarPago(id: number) {
       let subs = await this.bdSvc.deshabilitarPago(false, id).subscribe();
 

@@ -5,11 +5,13 @@ import { BuscarResidentesRoutingModule } from './buscar-residentes-routing.modul
 import { BuscarResidentesComponent } from './buscar-residentes.component';
 import { ComponentsModule } from '../../components.module';
 import { MaterialModule } from '../../material.module';
+import { AlertaEliminarComponent } from './components/alerta-eliminar/alerta-eliminar.component';
 
 
 @NgModule({
   declarations: [
-    BuscarResidentesComponent
+    BuscarResidentesComponent,
+    AlertaEliminarComponent
   ],
   imports: [
     CommonModule,

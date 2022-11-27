@@ -15,13 +15,15 @@ export class AgregarResidenteComponent implements OnInit {
     apellido_p: "",
     sexo: "",
     fecha_nacimiento: "",
-    edad: null,
+    edad: 0,
     telefono: "",
     habilitado: false,
     id_res: 0,
     apellido_m: '',
     id_casa: 0
   };
+
+  edad = null;
 
   direccion: Casa={
     num_dom: '',

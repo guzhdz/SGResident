@@ -4,7 +4,7 @@
         <h1>Detalles Residente</h1>
     </div>
 
-    <div class="contenido-container">
+    <div class="contenido-container show">
         <div class="row-data1">
             <div class="data">
                 <span class="titulo">Nombre:</span>
@@ -59,34 +59,30 @@
         <div class="row-data2">
             <div class="lista">
                 <span class="titulo">Pagos realizados:</span>
-                <div class="pago" *ngFor="let pago of pagos">
-                    <mat-icon class="icon">credit_card</mat-icon>
-                    <span>{{pago.fecha_pago}}</span>
-                </div>
+                <div class="pagos">
+                    <div class="pago" *ngFor="let pago of pagos">
+                        <mat-icon class="icon">credit_card</mat-icon>
+                        <span>{{pago.fecha_pago.substring(0, 10)}}</span>
+                    </div>
+                </div>                
+                <span *ngIf="pagos.length == 0">No hay pagos registrados</span>
             </div>
 
             <div class="lista izquierda">
-                <span class="titulo">Meses por pagar:</span>
-                <div class="pago red">
-                    <mat-icon class="icon color">credit_card</mat-icon>
-                    <span class="color">Enero</span>
+                <span class="titulo">Meses por pagar en {{ano}}:</span>
+                <div class="pagos">
+                    <div class="pago red" *ngFor="let mes of mesesF">
+                        <mat-icon class="icon color">credit_card</mat-icon>
+                        <span class="color">{{mes.nombre}}</span>
+                    </div>
                 </div>
-    
-                <div class="pago red">
-                    <mat-icon class="icon color">credit_card</mat-icon>
-                    <span class="color">Febrero</span>
-                </div>
-    
-                <div class="pago red">
-                    <mat-icon class="icon color">credit_card</mat-icon>
-                    <span class="color">Marzo</span>
-                </div>
+                <span *ngIf="mesesF.length == 0">Todos los meses del año pagados</span>
             </div>
 
         </div>
 
         <div class="boton">
-            <button>Aceptar</button>
+            <button (click)="irA('/buscar-residentes')">Aceptar</button>
         </div>
     </div>
 </div>

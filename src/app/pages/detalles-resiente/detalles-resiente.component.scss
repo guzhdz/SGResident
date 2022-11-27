@@ -85,6 +85,8 @@
                 display: flex;
                 flex-direction: column;
 
+                width: 30%;
+
                 span {
                     font-style: normal;
                     font-weight: 500;
@@ -137,65 +139,80 @@
         .row-data2 {
             display: flex;
             flex-direction: row;
-            align-items: center;
+
+            margin-bottom: 10px;
 
             .lista {
                 display: flex;
                 flex-direction: column;
 
+                width: 40%;
+
                 span {
-                    
+                    font-style: normal;
+                    font-weight: 500;
+                    font-size: 18px;
+                    line-height: 22px;
+
+                    color: var(--primary);
                 }
 
                 .titulo {
                     margin-bottom: 5px;
                     font-style: normal;
                     font-weight: 500;
-                    font-size: 18px;
+                    font-size: 16px;
                     line-height: 22px;
 
                     color: #FFFF;
                 }
-
-                .pago {
+                .pagos {
                     display: flex;
                     flex-direction: row;
-                    align-items: center;
+                    flex-wrap: wrap;
 
-                    padding: 4px;
+                    .pago {
+                        display: flex;
+                        flex-direction: row;
+                        align-items: center;
+                        margin-right: 10px;
 
-                    border-radius: 8px;
-
-                    background-color: var(--primary);
-
-                    margin-bottom: 8px;
-
-                    .icon {
-                        color: #FFFF;
-                        width: 30px;
-                        height: 30px;
-
-                        font-size: 30px;
+                        width: 40%;
+    
+                        padding: 4px;
+    
+                        border-radius: 8px;
+    
+                        background-color: var(--primary);
+    
+                        margin-bottom: 8px;
+    
+                        .icon {
+                            color: #FFFF;
+                            width: 30px;
+                            height: 30px;
+    
+                            font-size: 30px;
+                        }
+    
+                        span {
+                            color: #FFFF;
+                            margin-left: 5%;
+                            font-style: normal;
+                            font-weight: 500;
+                            font-size: 15px;
+                            line-height: 18px;
+                        }
+    
+                        .color {
+                            color: var(--primary);
+                        }
                     }
-
-                    span {
-                        color: #FFFF;
-                        margin-left: 5%;
-                        font-style: normal;
-                        font-weight: 500;
-                        font-size: 15px;
-                        line-height: 18px;
-                    }
-
-                    .color {
-                        color: var(--primary);
+    
+                    .red {
+                        background-color: var(--tertiary);
                     }
                 }
-
-                .red {
-                    background-color: var(--tertiary);
-                }
-
             }
 
             .izquierda {
@@ -203,6 +220,15 @@
             }
         }
     }
+}
 
+.show {
+    animation-name: show;
+    animation-duration: 5.5s;
+    animation-iteration-count: 1;
+}
 
+@keyframes show {
+    0% {opacity: 0;}
+    100% {opacity: 1;}
 }
