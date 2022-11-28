@@ -12,41 +12,51 @@
     <div class="datos">
 
         <div class="chico">
-            <input type="text" placeholder="Fecha de pago DD/MM/AAAA">
+            <input type="text" [(ngModel)]="datos.fecha_pago" placeholder="mm/dd/yyyy" 
+            onfocus="(this.type='date')" onblur="(this.type='text')" min="2020-01-01" max="2022-12-02"  required>
         </div>
 
 
         <div class="chico">
-            <input type="text" placeholder="Hora de pago 00:00">
+            <input type="text" [(ngModel)]="datos.hora_pago" placeholder="Hora de pago 00:00" onfocus="(this.type='time')" onblur="(this.type='text')" required>
 
         </div>
 
-        <div class="grande">
-            <input type="text" placeholder="Nombre del titular">
-        </div>
+        <div class="espacio"></div>
 
-        <div class="grande">
-            <input type="text" placeholder="Nombre de quien paga">
+        <div class="chico">
+            <input type="text" [(ngModel)]="datos.nombre_pag" placeholder="Nombre " minlength="3" maxlength="50" required>
         </div>
 
         <div class="chico">
-            <input type="text" placeholder="Concepto">
+            <input type="text" [(ngModel)]="datos.apellido_p_pag" placeholder="Apellido materno " minlength="3" maxlength="50" required>
         </div>
 
         <div class="chico">
-            <input type="text" placeholder="Cantidad a pagar">
+            <input type="text" [(ngModel)]="datos.apellido_m_pag" placeholder="Apellido materno " minlength="3" maxlength="50" required>
         </div>
 
         <div class="chico">
-            <input type="text" placeholder="Tipo de pago">
+            <input type="text" placeholder="Concepto" required minlength="3" maxlength="100" required>
         </div>
+
+        <div class="chico">
+            <input type="number" placeholder="Cantidad a pagar" min="1" max="330" required>
+        </div>
+
+        <div class="exampler-container">
+            <mat-form-field appearance="outline" required>
+                <mat-select [(value)]="datos.tipo_pago" placeholder="Tipo pago" >
+                  <mat-option value="Tarjeta">Tarjeta</mat-option>
+                  <mat-option value="Efectivo">Efectivo</mat-option>
+                  <mat-option value="Transferencia">Transferencia</mat-option>
+                </mat-select>
+        </mat-form-field>
 
     </div>
 
-
-
-    <div class="boton-container">
-        <button>Aceptar</button>
+    <div class="boton-container" (click)="agregarpago(); irA('/principal')">
+        <button>Agregar residente</button>
         <mat-icon class="icon">add_circle</mat-icon>
     </div>
    

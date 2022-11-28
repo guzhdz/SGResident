@@ -7,51 +7,67 @@
     <div class="subtitulo-container">
        <h2>Ingrese los datos del nuevo residente</h2>
     </div>
+    
 
-
+   <form action=""></form>
     <div class="datos">
 
+        <div class="chico">
+            <input type="text" [(ngModel)]="datos.nombre" placeholder="Nombre" required="">
+        </div>
+
+        <div class="chico">
+            <input type="text" [(ngModel)]="datos.apellido_p" placeholder="Apellido paterno" required="">
+        </div>
+
+        <div class="chico">
+            <input type="text"[(ngModel)]="datos.apellido_m" placeholder="Apellido materno" required>
+        </div>
+
+
+        <div class="exampler-container">
+            <mat-form-field appearance="outline">
+                <mat-select [(value)]="datos.sexo" placeholder="Sexo" required>
+                  <mat-option value="Masculino">Masculino</mat-option>
+                  <mat-option value="Femenino">Femenino</mat-option>
+                  <mat-option value="No binario">No binario</mat-option>
+                  <mat-option value="Otro">Otro</mat-option >
+                </mat-select>
+        </mat-form-field>
+ 
+
+
+        <div class="chico">
+
+            <input type="text" [(ngModel)]="datos.edad" placeholder="Fecha de nacimiento" onfocus="(this.type='date')" onblur="(this.type='text')"
+            min="1900-01-01" max="2022-11-07" required
+            >
+
+        </div>
+        <div class="chico">
+            <input type="tel"[(ngModel)]="datos.telefono" placeholder="Telefono" pattern="[0-9]{3}-[0-9]{3}-[0-9]{4}" required>
+        </div>
+
         <div class="grande">
-            <input type="text" [(ngModel)]="datos.nombre" placeholder="Nombre completo">
-        </div>
-
-
-        <div class="chico">
-            <input type="text"[(ngModel)]="datos.sexo" placeholder="Sexo">
-
+            <input type="text" [(ngModel)]="direccion.num_dom" placeholder="Domicilio y numero de casa" minlength="3" maxlength="100" required>
         </div>
 
         <div class="chico">
-            <input type="text"[(ngModel)]="edad" placeholder="Edad">
+            <input type="text" [(ngModel)]="direccion.vialidad_1" placeholder="Entre calle 1"minlength="3" maxlength="200" required>
         </div>
-
         <div class="chico">
-            <input type="text"[(ngModel)]="datos.telefono" placeholder="Telefono">
+            <input type="text" [(ngModel)]="direccion.vialidad_2" placeholder="Entre calle 2"minlength="3" maxlength="200" required>
         </div>
 
         <div class="grande">
-            <input type="text" [(ngModel)]="direccion.num_dom" placeholder="Domicilio y numero de casa">
-        </div>
-
-        <div class="chico">
-            <input type="text" [(ngModel)]="direccion.vialidad_1" placeholder="Entre calle 1">
-        </div>
-
-        <div class="chico">
-            <input type="text" [(ngModel)]="direccion.vialidad_2" placeholder="Entre calle 2">
-        </div>
-
-        <div class="grande">
-            <input type="text" [(ngModel)]="direccion.referencias" placeholder="Referencia">
+            <input type="text" [(ngModel)]="direccion.referencias" placeholder="Referencia"minlength="3" maxlength="100" required>
         </div>
 
     </div>
 
-
-
-    <div class="boton-container">
-        <button (click)="agregar()">Aceptar</button>
+    <div class="boton-container" (click)="agregarres(); irA('/principal')">
+        <button>Agregar residente</button>
         <mat-icon class="icon">add_circle</mat-icon>
     </div>
-   
+
 </div>
