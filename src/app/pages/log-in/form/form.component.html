@@ -14,15 +14,21 @@
         <mat-icon class="icon">lock</mat-icon>
         <div class="form-floating">
             <input type="password" class="form-control" id="contrasena" name="contraseña"
-            placeholder="Password123" [(ngModel)]="contrasena" required>
+            placeholder="Password123" [(ngModel)]="contrasena" required minlength="8" (change)="verificarLongitud()"
+            (input)="verificarLongitud2()">
             <label for="constrasena">Contraseña</label>
         </div>
         
     </div>
 
     <div class="advertencia" *ngIf="loginIncorrecto">
-        <span>Los datos ingesados son incorrectos, intentalo de nuevo</span>
+        <span>Los datos ingresados son incorrectos, inténtalo de nuevo</span>
     </div>
+
+    <div class="advertencia" *ngIf="longitudMinima">
+        <span>Las contraseñas deben tener una longitud mínima de 8 caracteres</span>
+    </div>
+
 
     <button [disabled]="!formulario.valid" (click)="ingresar()">Ingresar</button>
 </form>
