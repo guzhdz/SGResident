@@ -11,6 +11,7 @@ import { BdService } from '../../../shared/services/bd.service';
 })
 export class FormComponent implements OnInit {
   loginIncorrecto = false;
+  longitudMinima = false;
   usuario = "";
   contrasena = "";
 
@@ -40,4 +41,18 @@ export class FormComponent implements OnInit {
     }
   }
 
+  verificarLongitud() {
+    if(this.contrasena.length < 8) {
+      this.longitudMinima = true;
+      this.loginIncorrecto = false;
+    } else {
+      this.longitudMinima = false;
+    }
+  }
+
+  verificarLongitud2() {
+    if(this.contrasena.length >= 8) {
+      this.longitudMinima = false;
+    }
+  }
 }
