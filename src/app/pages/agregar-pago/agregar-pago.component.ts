@@ -40,9 +40,6 @@ export class AgregarPagoComponent implements OnInit {
 
   agregarpago(){
     let subs = this.bdSvc.agregarPago(this.datos)
-  
-
-
 
     }
 

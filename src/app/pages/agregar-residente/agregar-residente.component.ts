@@ -46,8 +46,8 @@ export class AgregarResidenteComponent implements OnInit {
     this.router.navigate([ruta]);
   }
 
-     agregarres(){ let subs = this.bdSvc.agregarResidenteActualizado(this.datos, this.direccion)
-    }
+   agregarres(){ let subs = this.bdSvc.agregarResidenteActualizado(this.datos, this.direccion)
+  }
 
 
 }

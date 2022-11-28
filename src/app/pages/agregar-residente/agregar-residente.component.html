@@ -36,14 +36,11 @@
         </mat-form-field>
  
 
+            <div class="chico">
+                <input type="text" [(ngModel)]="datos.fecha_nacimiento" placeholder="mm/dd/yyyy" 
+                onfocus="(this.type='date')" onblur="(this.type='text')" min="1900-01-01" max="2022-12-02"  required>
+            </div>
 
-        <div class="chico">
-
-            <input type="text" [(ngModel)]="datos.edad" placeholder="Edad" onfocus="(this.type='number')" onblur="(this.type='text')"
-            min="1900-01-01" max="2022-11-07" required
-            >
-
-        </div>
         <div class="chico">
             <input type="tel"[(ngModel)]="datos.telefono" placeholder="Telefono" pattern="[0-9]{3}-[0-9]{3}-[0-9]{4}" required>
         </div>
@@ -65,7 +62,7 @@
 
     </div>
 
-    <div class="boton-container" (click)="agregarres(); irA('/principal')">
+    <div class="boton-container" (click)="agregarres()">
         <button>Agregar residente</button>
         <mat-icon class="icon">add_circle</mat-icon>
     </div>
