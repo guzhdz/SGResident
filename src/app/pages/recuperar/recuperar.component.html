@@ -22,7 +22,8 @@
             <button (click)="irADetallesR(residente.id_res || 0)">Ver detalles</button>
             <mat-icon class="icon primary medio" (click)="recuperarAlerta(residente.nombre, 'residente', residente.id_res || 0)">
                 history</mat-icon>
-            <mat-icon class="icon danger" (click)="eliminarAlerta(residente.id_res || 0, residente.nombre)">delete</mat-icon>
+            <mat-icon class="icon danger" (click)="eliminarAlerta(residente.id_res || 0, residente.nombre, 
+            'residente', residente.id_casa)">delete</mat-icon>
         </div>
     </div>
 
@@ -37,7 +38,7 @@
             <button (click)="irADetallesP(pago.folio || 0)">Ver detalles</button>
             <mat-icon class="icon primary medio" (click)="recuperarAlerta(pago.num_dom, 'pago', pago.folio || 0)">
                 history</mat-icon>
-            <mat-icon class="icon danger" (click)="eliminarAlerta(pago.folio, pago.num_dom)">delete</mat-icon>
+            <mat-icon class="icon danger" (click)="eliminarAlerta(pago.folio, pago.num_dom, 'pago', 0)">delete</mat-icon>
         </div>
     </div>
 

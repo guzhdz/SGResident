@@ -432,6 +432,17 @@ app.delete(`${rootUrl}/pagos/:id`, (req, res) => {
   })
 });
 
+app.delete(`${rootUrl}/pagosR/:id`, (req, res) => {
+  const {id} = req.params;
+  ;(async () => {
+      const q = (`DELETE FROM pagos WHERE id_res = ${id}`);
+      await pool.query(q);
+      res.json({status: "Pago eliminado"});
+    })().catch(err => {
+      res.json(err.stack)
+  })
+});
+
 app.put(`${rootUrl}/pagos/:id`, (req, res) => {
   const {id} = req.params;
   const {

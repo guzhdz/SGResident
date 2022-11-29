@@ -150,6 +150,10 @@ export class BdService {
     return this.http.delete(`${this.apiUrl}/pagos/${id}`);
   }
 
+  eliminarPagoR(id: number) {
+    return this.http.delete(`${this.apiUrl}/pagosR/${id}`);
+  }
+
   modificarPago(pago: Pago, id: number) {
     return this.http.put(`${this.apiUrl}/pagos/${id}`, pago);
   }

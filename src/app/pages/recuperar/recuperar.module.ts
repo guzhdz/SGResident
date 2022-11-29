@@ -6,12 +6,14 @@ import { RecuperarComponent } from './recuperar.component';
 import { ComponentsModule } from 'src/app/components.module';
 import { MaterialModule } from '../../material.module';
 import { RecuperarAlertComponent } from './components/recuperar-alert/recuperar-alert.component';
+import { AlertaEliminarComponent } from './components/alerta-eliminar/alerta-eliminar.component';
 
 
 @NgModule({
   declarations: [
     RecuperarComponent,
-    RecuperarAlertComponent
+    RecuperarAlertComponent,
+    AlertaEliminarComponent
   ],
   imports: [
     CommonModule,

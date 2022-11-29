@@ -5,6 +5,7 @@ import { PagoDom } from '../../shared/interfaces/pagoDom.interface';
 import { Router } from '@angular/router';
 import { MatDialog } from '@angular/material/dialog';
 import { RecuperarAlertComponent } from './components/recuperar-alert/recuperar-alert.component';
+import { AlertaEliminarComponent } from './components/alerta-eliminar/alerta-eliminar.component';
 
 @Component({
   selector: 'app-recuperar',
@@ -103,8 +104,39 @@ export class RecuperarComponent implements OnInit {
     });
   }
 
-  eliminarAlerta(id: number, nombre: string) {
+  async eliminarAlerta(id: number, nombre: string, tipo: string, id_casa: number) {
+    const dialogRef = this.alerta.open(AlertaEliminarComponent, {
+      width: '400px',
+      height: '250px',
+      data: {nombre: nombre, borrar: true, tipo: tipo},
+    });
 
+    await dialogRef.afterClosed().subscribe(result => {
+      if(result.borrar)
+        if(result.tipo == "residente") {
+          let subs2 = this.bdSvc.eliminarPagoR(id).subscribe((value) => {});
+          let subs = this.bdSvc.eliminarResidente(id).subscribe((value) => {});
+          let subs3 = this.bdSvc.eliminarCasa(id_casa).subscribe((value) => {
+            console.log(value);
+          });
+
+
+          setTimeout(() => {this.buscarG()}, 400);
+      
+          setTimeout(() => {
+            subs3.unsubscribe();
+            subs2.unsubscribe();
+            subs.unsubscribe();
+          }, 1000);
+
+        } else if(result.tipo == "pago") {
+          let subs = this.bdSvc.eliminarPago(id).subscribe((value) => {});
+
+          setTimeout(() => {this.buscarG()}, 400);
+      
+          setTimeout(() => {subs.unsubscribe()}, 1000); 
+        }
+    });
   }
 
 }
