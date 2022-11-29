@@ -1,0 +1,14 @@
+<div class="alert-container">
+    <span class="title">Recuperar registro</span>
+
+    <p>¿Estás seguro de que quieres recuperar la infromacion de {{datos.nombre}} de la
+        lista de deshabilitados?
+    </p>
+
+    <div mat-dialog-actions>
+        <button (click)="no()">Cancelar</button>
+        <button mat-button [mat-dialog-close]="datos" cdkFocusInitial class="azul">Recuperar</button>
+    </div>
+</div>
+
+

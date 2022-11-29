@@ -93,6 +93,18 @@ app.get(`${rootUrl}/residenteNom/:nombre`, (req, res) => {
   })
 });
 
+app.get(`${rootUrl}/residenteNom2/:nombre`, (req, res) => {
+  const {nombre} = req.params;
+  ;(async () => {
+      const q = (`SELECT * FROM residentes WHERE concat(LOWER(nombre), ' ', LOWER(apellido_p), ' ', LOWER(apellido_m))
+      LIKE '%${nombre}%' AND habilitado = false`);
+      const { rows } = await pool.query(q);
+      res.json(rows);
+    })().catch(err => {
+      res.json(err.stack)
+  })
+});
+
 app.get(`${rootUrl}/residentesC/:habilitado`, (req, res) => {
   const {habilitado} = req.params;
   ;(async () => {
@@ -358,10 +370,25 @@ app.get(`${rootUrl}/pagosC/:habilitado`, (req, res) => {
 app.get(`${rootUrl}/pagosDomE/:domicilio`, (req, res) => {
   const {domicilio} = req.params;
   ;(async () => {
-      const q = (`SELECT pagos.folio, casas.num_dom FROM pagos 
+      const q = (`SELECT pagos.folio, casas.num_dom, pagos.fecha_pago FROM pagos 
       INNER JOIN residentes ON residentes.id_res = pagos.id_res
       JOIN casas ON casas.id_casa = residentes.id_casa
       where LOWER(casas.num_dom) LIKE '%${domicilio}%' AND pagos.habilitado = true
+      `);
+      const { rows } = await pool.query(q);
+      res.json(rows);
+    })().catch(err => {
+      res.json(err.stack)
+  })
+});
+
+app.get(`${rootUrl}/pagosDomE2/:domicilio`, (req, res) => {
+  const {domicilio} = req.params;
+  ;(async () => {
+      const q = (`SELECT pagos.folio, casas.num_dom, pagos.fecha_pago FROM pagos 
+      INNER JOIN residentes ON residentes.id_res = pagos.id_res
+      JOIN casas ON casas.id_casa = residentes.id_casa
+      where LOWER(casas.num_dom) LIKE '%${domicilio}%' AND pagos.habilitado = false
       `);
       const { rows } = await pool.query(q);
       res.json(rows);

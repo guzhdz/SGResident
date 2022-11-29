@@ -48,7 +48,7 @@ export class BuscarResidentesComponent implements OnInit {
   }
 
   irADetalles(id_res: number) {
-    this.router.navigate(['/detalles-residente'], {queryParams: {id_res: id_res}});
+    this.router.navigate(['/detalles-residente'], {queryParams: {id_res: id_res, eliminados: null}});
   }
 
   async eliminarAlerta(id: number | undefined, nombre: string) {

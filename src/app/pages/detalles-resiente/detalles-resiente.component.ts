@@ -36,6 +36,8 @@ export class DetallesResienteComponent implements OnInit {
   ano = new Date().getFullYear();
   indiceResidente: number = 0;
 
+  eliminados = false;
+
   mesesF = [
     {
       mes: 1,
@@ -96,6 +98,7 @@ export class DetallesResienteComponent implements OnInit {
   obtenerDatos() {
     let subs = this.route.queryParams.subscribe((value) => {
       this.indiceResidente = parseInt(value['id_res']);
+      this.eliminados = value['eliminados'];
       let subs2 = this.bdSvc.obtenerResidente(this.indiceResidente).subscribe((value: Residente[]) => {
         this.residente = value[0];
         let subs3 = this.bdSvc.obtenerCasa(this.residente.id_casa).subscribe((value: Casa[]) => {
@@ -124,8 +127,11 @@ export class DetallesResienteComponent implements OnInit {
     });
   }
   
-  irA(ruta: string) {
-    this.router.navigate([ruta]);
+  irA() {
+    if(Boolean(this.eliminados)) {
+      this.router.navigate(['/recuperar']);
+    } else {
+      this.router.navigate(['/buscar-residentes']);
+    }
   }
-
 }

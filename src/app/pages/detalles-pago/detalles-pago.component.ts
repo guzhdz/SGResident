@@ -31,6 +31,7 @@ export class DetallesPagoComponent implements OnInit {
   domicilio: string = "";
 
   indicePago: number = 0;
+  eliminados = false;
 
   ngOnInit(): void {
     this.obtenerDatos();
@@ -39,6 +40,7 @@ export class DetallesPagoComponent implements OnInit {
   obtenerDatos() {
     let subs = this.route.queryParams.subscribe((value) => {
       this.indicePago = parseInt(value['folio']);
+      this.eliminados = value['eliminados'];
       let subs2 = this.bdSvc.obtenerPago(this.indicePago).subscribe((value: Pago[]) => {
         this.pago = value[0];
         let subs3 = this.bdSvc.obtenerResidente(this.pago.id_res).subscribe((value: Residente[]) => {
@@ -56,8 +58,11 @@ export class DetallesPagoComponent implements OnInit {
     });
   }
 
-  irA(ruta: string) {
-    this.router.navigate([ruta]);
+  irA() {
+    if(Boolean(this.eliminados)) {
+      this.router.navigate(['/recuperar']);
+    } else {
+      this.router.navigate(['/buscar-pagos']);
+    }
   }
-
 }

@@ -22,20 +22,23 @@ export class PrincipalComponent implements OnInit {
     this.router.navigate([ruta]);
   }
 
-  obtenerDatos() {
-    let subs1 = this.bdSvc.contarResidentes(true).subscribe((value) => {
+  async obtenerDatos() {
+    this.residentes = 0;
+    this.pagos = 0;
+    this.archivados = 0;
+    let subs1 = await this.bdSvc.contarResidentes(true).subscribe((value) => {
       this.residentes = parseInt(value[0].count);
     });
 
-    let subs2 = this.bdSvc.contarPagos(true).subscribe((value) => {
+    let subs2 = await this.bdSvc.contarPagos(true).subscribe((value) => {
       this.pagos = parseInt(value[0].count);
     });
 
-    let subs3 = this.bdSvc.contarPagos(false).subscribe((value) => {
-      this.archivados = parseInt(value[0].count)
+    let subs3 = await this.bdSvc.contarPagos(false).subscribe((value) => {
+      this.archivados += parseInt(value[0].count)
     });
 
-    let subs4 = this.bdSvc.contarPagos(true).subscribe((value) => {
+    let subs4 = await this.bdSvc.contarResidentes(false).subscribe((value) => {
       this.archivados += parseInt(value[0].count);
     });
 

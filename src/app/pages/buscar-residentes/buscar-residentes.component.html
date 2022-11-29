@@ -32,7 +32,8 @@
 
     <div class="no-encontrado show" *ngIf="residentes.length == 0">
         <mat-icon class="icon">storage</mat-icon>
-        <span>No se han encontrado residentes registrados en la base de datos</span>
+        <span *ngIf="buscar == ''">No se han encontrado residentes registrados en la base de datos</span>
+        <span *ngIf="buscar != ''">No se han encontrado residentes que coincidan con los criterios de busqueda</span>
     </div>
 
     <br>

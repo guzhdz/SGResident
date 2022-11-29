@@ -1,1 +1,51 @@
-<app-header [opcion]="5"></app-header>
+<app-header [opcion]="-1"></app-header>
+<div class="buscar">
+    <div class="titulo-container">
+        <h1>Recuperar Registros</h1>
+    </div>
+
+    <div class="buscador">
+        <div class="icon-container">
+            <mat-icon class="icon">search</mat-icon>
+        </div>
+        <input type="text" placeholder="Buscar residente o pago" 
+        [(ngModel)]="buscar" (ngModelChange)="buscarG()">
+    </div>
+
+    <div class="residente" *ngFor="let residente of residentes" [ngClass]="aparece">
+        <div class="info">
+            <mat-icon class="icon">people</mat-icon>
+            <span>{{residente.nombre + " " + residente.apellido_p + " " + residente.apellido_m}}</span>
+        </div>
+
+        <div class="options">
+            <button (click)="irADetallesR(residente.id_res || 0)">Ver detalles</button>
+            <mat-icon class="icon primary medio" (click)="recuperarAlerta(residente.nombre, 'residente', residente.id_res || 0)">
+                history</mat-icon>
+            <mat-icon class="icon danger" (click)="eliminarAlerta(residente.id_res || 0, residente.nombre)">delete</mat-icon>
+        </div>
+    </div>
+
+    <div class="residente" *ngFor="let pago of pagos" [ngClass]="aparece">
+        <div class="info">
+            <mat-icon class="icon">credit_card</mat-icon>
+            <span>{{pago.num_dom}}</span>
+            <span class="center">{{pago.fecha_pago.substring(0, 10)}}</span>
+        </div>
+
+        <div class="options">
+            <button (click)="irADetallesP(pago.folio || 0)">Ver detalles</button>
+            <mat-icon class="icon primary medio" (click)="recuperarAlerta(pago.num_dom, 'pago', pago.folio || 0)">
+                history</mat-icon>
+            <mat-icon class="icon danger" (click)="eliminarAlerta(pago.folio, pago.num_dom)">delete</mat-icon>
+        </div>
+    </div>
+
+    <div class="no-encontrado show" *ngIf="residentes.length == 0 && pagos.length == 0">
+        <mat-icon class="icon">storage</mat-icon>
+        <span *ngIf="buscar == ''">No se han encontrado registros inhabilitados en la base de datos</span>
+        <span *ngIf="buscar != ''">No se han encontrado registros que coincidan con los criterios de busqueda</span>
+    </div>
+
+    <br>
+</div>

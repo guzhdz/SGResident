@@ -42,6 +42,10 @@ export class BdService {
     return this.http.get<Residente[]>(`${this.apiUrl}/residenteNom/${nombre}`);
   }
 
+  obtenerResidenteNom2(nombre: string): Observable<Residente[]> {
+    return this.http.get<Residente[]>(`${this.apiUrl}/residenteNom2/${nombre}`);
+  }
+
   contarResidentes(habilitado: boolean): Observable<any> {
     return this.http.get<any>(`${this.apiUrl}/residentesC/${habilitado}`);
   }
@@ -108,6 +112,10 @@ export class BdService {
 
   obtenerPagosDomE(domicilio: string): Observable<PagoDom[]> {
     return this.http.get<PagoDom[]>(`${this.apiUrl}/pagosDomE/${domicilio}`);
+  }
+
+  obtenerPagosDomE2(domicilio: string): Observable<PagoDom[]> {
+    return this.http.get<PagoDom[]>(`${this.apiUrl}/pagosDomE2/${domicilio}`);
   }
 
   obtenerPagosDomG(habilitado: boolean): Observable<PagoDom[]> {

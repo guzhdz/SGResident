@@ -39,7 +39,6 @@ export class AgregarResidenteComponent implements OnInit {
   };
 
   ngOnInit(): void {
-    this.agregarres()
   }
 
   irA(ruta: string) {
