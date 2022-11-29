@@ -11,7 +11,10 @@ import { Router } from '@angular/router';
 })
 export class AgregarPagoComponent implements OnInit {
 
+  public ids = [];
+
   constructor(private bdSvc: BdService, private router: Router) { }
+
 
   datos: Pago={
     fecha_pago: '',
@@ -22,29 +25,23 @@ export class AgregarPagoComponent implements OnInit {
     concepto: '',
     cantidad_pagar: 0,
     tipo_pago: '',
-    habilitado: false,
+    habilitado: true,
+    folio: 0,
     id_res: 0
   };
 
-  
-
-
-
   ngOnInit(): void {
-    this.agregarpago()
+    this.bdSvc.obtenerResidentes().subscribe()
   }
   
-  irA(ruta: string) {
-    this.router.navigate([ruta]);
-  }
 
-  agregarpago(){
+
+  agregarpago(ruta: string){
+    console.log(this.datos.hora_pago)
     let subs = this.bdSvc.agregarPago(this.datos)
-  
-
-
-
+    this.router.navigate([ruta]);
     }
+
 
 
 }

@@ -1,4 +1,7 @@
 import { Component, OnInit } from '@angular/core';
+import { MatDialog } from '@angular/material/dialog';
+import { BdService } from 'src/app/shared/services/bd.service';
+import { FacturasModule } from './facturas.module';
 
 @Component({
   selector: 'app-facturas',
@@ -6,6 +9,9 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./facturas.component.scss']
 })
 export class FacturasComponent implements OnInit {
+
+
+  buscar: string = "";
 
   constructor() { }
 

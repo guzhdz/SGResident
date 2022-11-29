@@ -18,9 +18,10 @@
 
 
         <div class="chico">
-            <input type="text" [(ngModel)]="datos.hora_pago" placeholder="Hora de pago 00:00" onfocus="(this.type='time')" onblur="(this.type='text')" required>
+            <input type="text" step="1" [(ngModel)]="datos.hora_pago" placeholder="Hora de pago 00:00" onfocus="(this.type='time')" onblur="(this.type='text')">
 
         </div>
+      
 
         <div class="espacio"></div>
 
@@ -29,7 +30,7 @@
         </div>
 
         <div class="chico">
-            <input type="text" [(ngModel)]="datos.apellido_p_pag" placeholder="Apellido materno " minlength="3" maxlength="50" required>
+            <input type="text" [(ngModel)]="datos.apellido_p_pag" placeholder="Apellido paterno " minlength="3" maxlength="50" required>
         </div>
 
         <div class="chico">
@@ -37,28 +38,35 @@
         </div>
 
         <div class="chico">
-            <input type="text" placeholder="Concepto" required minlength="3" maxlength="100" required>
+            <input type="text" [(ngModel)]="datos.concepto" placeholder="Concepto" required minlength="3" maxlength="100" required>
         </div>
 
         <div class="chico">
-            <input type="number" placeholder="Cantidad a pagar" min="1" max="330" required>
+            <input type="number"[(ngModel)]="datos.cantidad_pagar" placeholder="Cantidad a pagar" min="1" max="330" required>
         </div>
-
+  
         <div class="exampler-container">
             <mat-form-field appearance="outline" required>
                 <mat-select [(value)]="datos.tipo_pago" placeholder="Tipo pago" >
                   <mat-option value="Tarjeta">Tarjeta</mat-option>
                   <mat-option value="Efectivo">Efectivo</mat-option>
                   <mat-option value="Transferencia">Transferencia</mat-option>
+                  <mat-option value="Cheque">Cheque</mat-option>
+                  <mat-option value="Deposito">Deposito</mat-option>
                 </mat-select>
         </mat-form-field>
 
+        <div class="chico">
+            <input type="number" [(ngModel)]="datos.id_res" placeholder="Id Residente titular" onfocus="(this.type='number')" onblur="(this.type='text')" minlength="1" maxlength="50" required>
+        </div>
+
     </div>
 
-    <div class="boton-container" (click)="agregarpago(); irA('/principal')">
-        <button>Agregar residente</button>
+    
+    <div class="boton-container">
+        <button [disabled]="!datos.fecha_pago||!datos.hora_pago||!datos.nombre_pag||!datos.apellido_p_pag||!datos.apellido_m_pag||!datos.concepto||!datos.cantidad_pagar" (click)="agregarpago('/principal')">Agregar </button>
         <mat-icon class="icon">add_circle</mat-icon>
-    </div>
+   </div>
    
 </div>
 

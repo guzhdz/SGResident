@@ -14,6 +14,9 @@ import { Router } from '@angular/router';
 
 export class AgregarResidenteComponent implements OnInit {
 
+
+  public age: number=0;
+
   constructor(private bdSvc: BdService, private router: Router) { }
 
   datos: Residente={
@@ -23,7 +26,7 @@ export class AgregarResidenteComponent implements OnInit {
     fecha_nacimiento: "",
     edad: 0,
     telefono: "",
-    habilitado: false,
+    habilitado: true,
     id_res: 0,
     apellido_m: '',
     id_casa: 0
@@ -39,14 +42,15 @@ export class AgregarResidenteComponent implements OnInit {
   };
 
   ngOnInit(): void {
+
   }
 
-  irA(ruta: string) {
+
+
+   agregarres(ruta: string){ 
     this.router.navigate([ruta]);
+    let subs = this.bdSvc.agregarResidenteActualizado(this.datos, this.direccion)
   }
-
-     agregarres(){ let subs = this.bdSvc.agregarResidenteActualizado(this.datos, this.direccion)
-    }
 
 
 }

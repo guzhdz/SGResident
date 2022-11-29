@@ -17,6 +17,8 @@ describe('AgregarPagoComponent', () => {
     fixture.detectChanges();
   });
 
+  
+
   it('should create', () => {
     expect(component).toBeTruthy();
   });
