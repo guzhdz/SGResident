@@ -28,21 +28,20 @@
         <div class="exampler-container">
             <mat-form-field appearance="outline">
                 <mat-select [(value)]="datos.sexo" placeholder="Sexo" required>
-                  <mat-option value="Masculino">Masculino</mat-option>
-                  <mat-option value="Femenino">Femenino</mat-option>
-                  <mat-option value="No binario">No binario</mat-option>
-                  <mat-option value="Otro">Otro</mat-option >
+                  <mat-option value="m">Masculino</mat-option>
+                  <mat-option value="f">Femenino</mat-option>
+                  <mat-option value="n">No binario</mat-option>
+                  <mat-option value="o">Otro</mat-option >
                 </mat-select>
         </mat-form-field>
  
 
             <div class="chico">
-                <input type="text" [(ngModel)]="datos.fecha_nacimiento" placeholder="mm/dd/yyyy" 
-                onfocus="(this.type='date')" onblur="(this.type='text')" min="1900-01-01" max="2022-12-02"  required>
+                <input type="text" [(ngModel)]="datos.fecha_nacimiento" placeholder="mm/dd/yyyy" onfocus="(this.type='date')" onblur="(this.type='text')" min="1900-01-01" max="2022-12-02"  required>
             </div>
 
         <div class="chico">
-            <input type="tel"[(ngModel)]="datos.telefono" placeholder="Telefono" pattern="[0-9]{3}-[0-9]{3}-[0-9]{4}" required>
+            <input type="tel" [(ngModel)]="datos.telefono" placeholder="Telefono" minlength="10" maxlength="10" required>
         </div>
 
         <div class="grande">
@@ -57,14 +56,16 @@
         </div>
 
         <div class="grande">
-            <input type="text" [(ngModel)]="direccion.referencias" placeholder="Referencia"minlength="3" maxlength="100" required>
+            <input type="text" class="form-control" [(ngModel)]="direccion.referencias" placeholder="Referencia"minlength="3" maxlength="100" required>
         </div>
 
-    </div>
+        
 
-    <div class="boton-container" (click)="agregarres()">
-        <button>Agregar residente</button>
-        <mat-icon class="icon">add_circle</mat-icon>
-    </div>
 
+    </div>
+     <h1></h1>
+    <div class="boton-container">
+         <button [disabled]="!datos.nombre||!datos.apellido_p||!datos.apellido_m||!datos.sexo||!datos.fecha_nacimiento||!datos.telefono||!direccion.num_dom||!direccion.vialidad_1||!direccion.vialidad_2||!direccion.referencias" (click)="agregarres('/principal')">Agregar residente</button>
+         <mat-icon class="icon">add_circle</mat-icon>
+    </div>
 </div>

@@ -130,8 +130,12 @@ export class BdService {
     return this.http.get<any>(`${this.apiUrl}/pagosC/${habilitado}`);
   }
 
+ 
   agregarPago(pago: Pago) {
-    return this.http.post(`${this.apiUrl}/pagos`, pago);
+    let subs = this.http.post(`${this.apiUrl}/pagos`, pago).subscribe((value: any) => {
+      pago.folio = value[0].folio}
+    )
+    setTimeout(() => {subs.unsubscribe()}, 1000);
   }
 
   eliminarPago(id: number) {
@@ -170,4 +174,5 @@ export class BdService {
   modificarFactura(factura: Factura, id: number) {
     return this.http.put(`${this.apiUrl}/facturas/${id}`, factura);
   }
+
 }
